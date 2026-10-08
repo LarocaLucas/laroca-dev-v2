@@ -42,10 +42,10 @@ function Cartao({ p, i, total, progresso }: { p: Projeto; i: number; total: numb
         </div>
         <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
           <div className="hidden w-[40%] flex-col gap-3 sm:flex sm:gap-4">
-            {formatos.map((f, k) => (p.imagens ? <img key={k} src={p.imagens[k]} alt="" loading="lazy" className={`w-full object-cover ${f} ${RAIO}`} /> : <Capa key={k} texto={p.capa![k]} className={f} />))}
+            {formatos.map((f, k) => (p.imagens ? <img key={k} src={p.imagens[k]} alt={`${p.nome}: tela ${k + 2} do projeto`} loading="lazy" className={`w-full object-cover ${f} ${RAIO}`} /> : <Capa key={k} texto={p.capa![k]} className={f} />))}
           </div>
-          <div className="hidden sm:block sm:w-[60%]">{p.imagens ? <img src={p.imagens[2]} alt={`Tela inicial de ${p.nome}`} loading="lazy" className={`h-full w-full object-cover ${RAIO}`} /> : <Capa texto={p.capa![2]} className="h-full" />}</div>
-          <div className="sm:hidden">{p.imagens ? <img src={p.imagens[3]} alt={`Tela inicial de ${p.nome}`} loading="lazy" className={`aspect-[14/9] w-full object-cover ${RAIO}`} /> : <Capa texto={p.capa![2]} className="aspect-[14/9]" />}</div>
+          <div className="hidden sm:block sm:w-[60%]">{p.imagens ? <img src={p.imagens[2]} alt={`${p.nome}, ${p.categoria.toLowerCase()}: tela inicial`} loading="lazy" className={`h-full w-full object-cover ${RAIO}`} /> : <Capa texto={p.capa![2]} className="h-full" />}</div>
+          <div className="sm:hidden">{p.imagens ? <img src={p.imagens[3]} alt={`${p.nome}, ${p.categoria.toLowerCase()}: tela inicial`} loading="lazy" className={`aspect-[14/9] w-full object-cover ${RAIO}`} /> : <Capa texto={p.capa![2]} className="aspect-[14/9]" />}</div>
           <div className="sm:hidden">{p.imagens ? <img src={p.imagens[0]} alt="" loading="lazy" className={`w-full object-cover ${formatos[0]} ${RAIO}`} /> : <Capa texto={p.capa![0]} className={formatos[0]} />}</div>
         </div>
       </motion.article>

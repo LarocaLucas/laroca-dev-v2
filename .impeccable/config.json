@@ -1,0 +1,26 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "gradient-text",
+        "value": "*",
+        "files": [
+          "src/index.css"
+        ],
+        "createdAt": "2026-10-08T03:41:27.763Z",
+        "reason": "o degradê nos títulos vem do prompt de referência escolhido pelo dono (classe .hero-heading)"
+      },
+      {
+        "rule": "gradient-text",
+        "value": "*",
+        "files": [
+          "public/404.html"
+        ],
+        "createdAt": "2026-10-08T03:41:27.893Z",
+        "reason": "o degradê nos títulos vem do prompt de referência escolhido pelo dono (classe .hero-heading)"
+      }
+    ]
+  }
+}

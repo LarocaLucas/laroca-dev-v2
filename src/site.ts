@@ -15,10 +15,10 @@ export const NAV = [
   ["Contato", "#contato"],
 ] as const;
 
-export const CHAMADA = "sites, sistemas e automações sob medida para destacar o seu negócio";
+export const CHAMADA = "sites, sistemas e automações sob medida em Castro e Ponta Grossa";
 
 export const SOBRE =
-  "A laroca.dev desenvolve sites, sistemas de gestão e automações para negócios que querem se destacar e vender mais. Somos de Castro, no Paraná, com mais de cinco anos de experiência em TI. Cada projeto é feito sob medida para o cliente, do levantamento ao deploy, com atendimento direto de quem desenvolve. Vamos construir algo incrível juntos!";
+  "A laroca.dev desenvolve sites, sistemas de gestão e automações para negócios que querem se destacar e vender mais. Somos de Castro, no Paraná, e atendemos Ponta Grossa e toda a região dos Campos Gerais, com mais de cinco anos de experiência em TI. Cada projeto é feito sob medida para o cliente, do levantamento ao deploy, com atendimento direto de quem desenvolve. Vamos construir algo incrível juntos!";
 
 export const SERVICOS = [
   ["Sistemas sob medida", "Sistemas totalmente personalizados, desenvolvidos sob demanda para o jeito que a sua empresa trabalha. Levantamos os requisitos com você e construímos do zero, sem obrigar o negócio a se adaptar a um software pronto."],

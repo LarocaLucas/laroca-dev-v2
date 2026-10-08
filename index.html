@@ -3,19 +3,83 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LarocaDev · Sites, sistemas e automações</title>
-    <meta name="description" content="A laroca.dev desenvolve sites, landing pages, sistemas sob medida e automações para negócios que querem se destacar. Castro e Ponta Grossa, PR." />
+    <title>laroca.dev | Sites e sistemas sob medida em Castro e Ponta Grossa</title>
+    <meta name="description" content="A laroca.dev desenvolve sites, landing pages, sistemas de gestão sob medida e automações para empresas de Castro, Ponta Grossa e Campos Gerais, no Paraná." />
+    <link rel="canonical" href="https://laroca.dev/" />
     <meta name="theme-color" content="#0C0C0C" />
-    <meta property="og:title" content="LarocaDev · Sites, sistemas e automações" />
-    <meta property="og:description" content="Sistemas sob medida, sites e automações, do levantamento ao deploy." />
+    <meta name="author" content="laroca.dev" />
+    <meta name="geo.region" content="BR-PR" />
+    <meta name="geo.placename" content="Castro, Paraná" />
+
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="laroca.dev" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:url" content="https://laroca.dev/" />
+    <meta property="og:title" content="laroca.dev | Sites e sistemas sob medida" />
+    <meta property="og:description" content="Sites, sistemas de gestão sob medida e automações para empresas de Castro, Ponta Grossa e região." />
+    <meta property="og:image" content="https://laroca.dev/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="laroca.dev: sites, sistemas e automações sob medida" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="laroca.dev | Sites e sistemas sob medida" />
+    <meta name="twitter:description" content="Sites, sistemas de gestão sob medida e automações para empresas de Castro, Ponta Grossa e região." />
+    <meta name="twitter:image" content="https://laroca.dev/og.png" />
+
     <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" />
+    <link rel="apple-touch-icon" href="%BASE_URL%apple-touch-icon.png" />
+    <link rel="manifest" href="%BASE_URL%site.webmanifest" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "ProfessionalService",
+            "@id": "https://laroca.dev/#empresa",
+            "name": "laroca.dev",
+            "alternateName": ["Laroca Dev", "LarocaDev"],
+            "url": "https://laroca.dev/",
+            "logo": "https://laroca.dev/apple-touch-icon.png",
+            "image": "https://laroca.dev/og.png",
+            "description": "Desenvolvimento de sites, landing pages, sistemas de gestão sob medida e automações para empresas.",
+            "email": "contato@laroca.dev",
+            "telephone": "+55-42-99804-1396",
+            "priceRange": "$$",
+            "address": { "@type": "PostalAddress", "addressLocality": "Castro", "addressRegion": "PR", "addressCountry": "BR" },
+            "areaServed": [
+              { "@type": "City", "name": "Castro" },
+              { "@type": "City", "name": "Ponta Grossa" },
+              { "@type": "City", "name": "Carambeí" },
+              { "@type": "AdministrativeArea", "name": "Campos Gerais" },
+              { "@type": "State", "name": "Paraná" }
+            ],
+            "sameAs": ["https://instagram.com/dev.laroca"],
+            "contactPoint": { "@type": "ContactPoint", "contactType": "sales", "telephone": "+55-42-99804-1396", "email": "contato@laroca.dev", "availableLanguage": "Portuguese", "areaServed": "BR" },
+            "knowsAbout": ["Desenvolvimento de sites", "Desenvolvimento de sistemas sob medida", "Landing pages", "Automação de processos", "Sistemas de gestão para lojas", "Sistemas para clínicas odontológicas", "Consultoria de TI"],
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Serviços",
+              "itemListElement": [
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sistemas sob medida", "description": "Sistemas totalmente personalizados, desenvolvidos sob demanda para a operação de cada empresa." } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sistemas prontos por segmento", "description": "Sistemas de gestão para lojas de roupas e calçados e para clínicas." } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sites institucionais", "description": "Criação de sites profissionais, responsivos e otimizados para o Google." } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Landing pages", "description": "Páginas de alta conversão para campanhas, produtos e lançamentos." } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Automações e integrações", "description": "Automação de tarefas e integração entre WhatsApp, planilhas, cobranças e sistemas." } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Consultoria de TI", "description": "Diagnóstico e orientação em tecnologia para empresas." } }
+              ]
+            }
+          },
+          { "@type": "WebSite", "@id": "https://laroca.dev/#site", "url": "https://laroca.dev/", "name": "laroca.dev", "inLanguage": "pt-BR", "publisher": { "@id": "https://laroca.dev/#empresa" } }
+        ]
+      }
+    </script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"><!--app--></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

@@ -1,0 +1,15 @@
+# Produção: laroca.dev. Publicar com `pnpm deploy` (faz o build com BASE=/ antes).
+name = "laroca-dev"
+main = "worker.js"
+compatibility_date = "2026-09-01"
+workers_dev = false
+routes = [
+  { pattern = "laroca.dev", custom_domain = true },
+  { pattern = "www.laroca.dev", custom_domain = true },
+]
+
+[assets]
+directory = "./dist"
+binding = "ASSETS"
+run_worker_first = true
+not_found_handling = "404-page"

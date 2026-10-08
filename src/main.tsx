@@ -1,13 +1,18 @@
 import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import { createRoot, hydrateRoot } from "react-dom/client";
 import { MotionConfig } from "motion/react";
 import App from "./App";
 import "./index.css";
 
-createRoot(document.getElementById("root")!).render(
+const raiz = document.getElementById("root")!;
+const app = (
   <StrictMode>
     <MotionConfig reducedMotion="user">
       <App />
     </MotionConfig>
-  </StrictMode>,
+  </StrictMode>
 );
+
+// No build, o HTML já vem pronto (scripts/prerender.mjs); em desenvolvimento a raiz está vazia.
+if (raiz.querySelector("main")) hydrateRoot(raiz, app);
+else createRoot(raiz).render(app);

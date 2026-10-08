@@ -1,6 +1,6 @@
 # LarocaDev v2
 
-Nova versão do site laroca.dev, em avaliação pelo dono antes de substituir a atual (`E:\Arquivos\Projetos\LarocaDev\laroca-dev`).
+Site da laroca.dev, no ar em https://laroca.dev desde 08/10/2026. A versão anterior está em `E:\Arquivos\Projetos\LarocaDev\laroca-dev` (repositório `LarocaLucas/laroca-dev`).
 
 ## Diretrizes
 - Stack: Vite + React 18 + TypeScript + Tailwind 3 + Motion (`motion/react`) + Lucide. Sem backend.
@@ -11,7 +11,9 @@ Nova versão do site laroca.dev, em avaliação pelo dono antes de substituir a 
 - Voz: a laroca.dev fala como **empresa** ("desenvolvemos", "nossa"), nunca como "eu" nem citando o Lucas. Diferencial a destacar: sistemas totalmente personalizados, sob medida e sob demanda.
 - Capturas dos sites: uma por espaço, no formato exato dele (`-hero` 11:10, `-a` 1440:775, `-b` 1280:1016, `-m1..3` 14:9 para a faixa). Não reaproveitar uma captura em espaço de outro formato, senão ela sai cortada.
 - Texto em pt-BR. Movimento respeita `prefers-reduced-motion`.
-- Publicação de prévia: GitHub Pages pelo workflow `.github/workflows/pages.yml` (repositório público `LarocaLucas/laroca-dev-v2`), em https://larocalucas.github.io/laroca-dev-v2/. O `base` do Vite vem da variável `BASE` (padrão `/laroca-dev-v2/`); no domínio próprio usar `BASE=/`.
+- **Produção: https://laroca.dev**, no Worker `laroca-dev` da Cloudflare (o mesmo que servia o site antigo). Publicar com `pnpm deploy` (`scripts/deploy.mjs`: build com `BASE=/` e `wrangler deploy`). `worker.js` redireciona `www` para o domínio principal. No Git Bash não use `BASE=/ pnpm build`: o terminal converte a barra num caminho do Windows.
+- Prévia: GitHub Pages em https://larocalucas.github.io/laroca-dev-v2/ (workflow `pages.yml`, a cada push). A prévia sai com `noindex` e canonical para laroca.dev.
+- SEO: o build pré-renderiza a página (`src/entry-server.tsx` + `scripts/prerender.mjs`), então o HTML já vem com todo o texto. Título, descrição, canonical, Open Graph e JSON-LD (`ProfessionalService` com área atendida) ficam no `index.html`; `robots.txt`, `sitemap.xml`, `_headers`, `404.html`, `og.png` e ícones em `public/`. Ao mudar conteúdo relevante, atualize o `lastmod` do sitemap.
 - Commits: Conventional Commits em pt-BR.
 
 ## Estado atual
@@ -22,6 +24,13 @@ Nova versão do site laroca.dev, em avaliação pelo dono antes de substituir a 
 - `pnpm install`, `pnpm dev` (local), `pnpm build` (confere tipos e gera `dist`), `pnpm preview`.
 
 ## Registro de andamento
+### 2026-10-08 11:30 · Claude Code
+- Pedido do dono: colocar a nova versão no domínio e configurar o SEO, com foco em buscas por desenvolvedores e empresas de tecnologia da região.
+- Feito: publicado em laroca.dev (Worker `laroca-dev`, versão 65cf2b47). `www` redireciona com 301. Pré-renderização do HTML; título e descrição com Castro e Ponta Grossa; canonical; Open Graph e imagem de compartilhamento 1200×630; JSON-LD de empresa local com endereço em Castro e área atendida (Castro, Ponta Grossa, Carambeí, Campos Gerais, Paraná); robots, sitemap, página 404, manifest, ícones, cabeçalhos de cache e segurança; textos alternativos nas telas dos projetos; região citada no topo e no "Sobre".
+- Não feito: Google Search Console e Perfil da Empresa no Google, que exigem login na conta Google do dono. Falta ele criar a propriedade e passar o código de verificação para entrar no DNS.
+- Aviso do revisor de design (texto em degradê) dispensado para `src/index.css` e `public/404.html`: vem do prompt de referência.
+- Testes: build com `BASE=/` sem erros; no Edge, sem mensagens no console nem erro de hidratação, sem rolagem horizontal em 1440 e 390 de largura. No ar: início 200, `www` 301, robots/sitemap/og/ícones 200, página inexistente 404, JSON-LD válido, nenhuma imagem sem `alt`, calculadora em precos.laroca.dev intacta (401 sem senha).
+- Como voltar atrás: `npx wrangler rollback` neste projeto, ou publicar de novo a partir da pasta do site antigo.
 ### 2026-10-08 10:05 · Claude Code
 - O dono criou um Gmail exclusivo da marca, `dev.laroca@gmail.com`. O encaminhamento de `contato@laroca.dev` na Cloudflare passou do Gmail pessoal para ele, depois de o destino ser verificado. O site continua mostrando `contato@laroca.dev`; nada mudou no código.
 - Testes: a API da Cloudflare devolveu a regra ativa com o destino novo e o roteamento `ready`. Não testado: a entrega de uma mensagem real.
