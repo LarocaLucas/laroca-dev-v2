@@ -33,6 +33,7 @@ export default function Contact() {
           {links.map(([nome, href]) => (
             <a key={nome} href={href} target="_blank" rel="noopener noreferrer" className="text-sm font-medium uppercase tracking-wider transition-opacity duration-200 hover:opacity-60 sm:text-base">
               {nome}
+              {href.startsWith("http") && <span className="sr-only"> (abre em nova aba)</span>}
             </a>
           ))}
         </nav>

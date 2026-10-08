@@ -85,6 +85,7 @@ export default function Projects() {
                   </p>
                   <p className="max-w-2xl font-light text-[#D7E2EA]/70">{m.texto}</p>
                 </div>
+                {m.link && <span className="sr-only">(abre em nova aba)</span>}
                 {m.link && <ArrowUpRight aria-hidden="true" className="h-7 w-7 flex-none text-[#D7E2EA] transition-transform duration-200 group-hover:-translate-y-1 group-hover:translate-x-1 sm:h-9 sm:w-9" />}
               </FadeIn>
             );

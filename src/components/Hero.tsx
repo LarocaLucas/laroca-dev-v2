@@ -5,6 +5,9 @@ import { Emblema } from "./Iso";
 export default function Hero() {
   return (
     <section className="relative flex h-screen min-h-[560px] flex-col" style={{ overflowX: "clip" }}>
+      <a href="#sobre" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-[#D7E2EA] focus:px-5 focus:py-2 focus:font-medium focus:text-[#0C0C0C]">
+        Pular para o conteúdo
+      </a>
       <FadeIn delay={0} y={-20}>
         <nav aria-label="Seções" className="flex justify-between px-6 pt-6 md:px-10 md:pt-8">
           {NAV.map(([nome, href]) => (

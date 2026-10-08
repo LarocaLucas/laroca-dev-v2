@@ -24,6 +24,12 @@ Site da laroca.dev, no ar em https://laroca.dev desde 08/10/2026. A versão ante
 - `pnpm install`, `pnpm dev` (local), `pnpm build` (confere tipos e gera `dist`), `pnpm preview`.
 
 ## Registro de andamento
+### 2026-10-08 14:40 · Claude Code
+- Pedido do dono: revisão de acessibilidade. Auditoria com axe-core (WCAG 2.2 A/AA + boas práticas) no site publicado, em 1440 e 390 de largura, e percurso por teclado.
+- Encontrado e corrigido: `aria-label` num parágrafo (uso proibido) no texto animado do "Sobre", trocado por texto oculto visualmente para leitores de tela; faltava atalho "Pular para o conteúdo"; links que abrem em nova aba agora avisam isso aos leitores de tela.
+- Aprovado sem mudança: ordem do Tab segue a página, todo elemento focado tem contorno visível, hierarquia de títulos correta (um h1, h2 por seção, h3 nos itens), imagens com texto alternativo, contraste, idioma da página, animações desligadas com `prefers-reduced-motion`.
+- Também hoje: registro DMARC do domínio em modo de observação (`p=none`), com relatórios para `dmarc@laroca.dev`, que encaminha ao Gmail da marca.
+- Não testado: leitor de tela de verdade (NVDA/VoiceOver) e Safari no iPhone.
 ### 2026-10-08 12:10 · Claude Code
 - O dono verificou o domínio no Search Console (registro `google-site-verification` no DNS) e enviou o sitemap; o painel mostrou "não foi possível buscar". Conferido do lado do servidor: `sitemap.xml` responde 200 como `application/xml`, XML válido, também para o agente do Googlebot; robots libera tudo; a Cloudflare não tem proteção contra robôs ligada. É o estado inicial comum de propriedade nova.
 - Achado e corrigido: `http://laroca.dev` respondia 200 sem redirecionar. Ligado o "Always Use HTTPS" na zona da Cloudflare (vale para todos os subdomínios).

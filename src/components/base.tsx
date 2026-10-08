@@ -59,7 +59,8 @@ export function AnimatedText({ text, className, style }: { text: string; classNa
   const total = text.length;
   let i = 0;
   return (
-    <p ref={ref} className={className} style={style} aria-label={text}>
+    <p ref={ref} className={className} style={style}>
+      <span className="sr-only">{text}</span>
       {text.split(" ").map((palavra, p) => {
         const inicio = i;
         i += palavra.length + 1;
@@ -91,6 +92,7 @@ export function ContactButton({ label = "Fale conosco", texto = MSG_ORCAMENTO }:
       }}
     >
       {label}
+      <span className="sr-only">(abre em nova aba)</span>
     </a>
   );
 }
@@ -104,6 +106,7 @@ export function GhostButton({ href, children, escuro = false }: { href: string; 
       className={`inline-block whitespace-nowrap rounded-full border-2 px-6 py-2.5 text-xs font-medium uppercase tracking-widest transition-colors duration-200 sm:px-10 sm:py-3.5 sm:text-base ${escuro ? "border-[#0C0C0C] text-[#0C0C0C] hover:bg-[#0C0C0C]/10" : "border-[#D7E2EA] text-[#D7E2EA] hover:bg-[#D7E2EA]/10"}`}
     >
       {children}
+      <span className="sr-only">(abre em nova aba)</span>
     </a>
   );
 }
