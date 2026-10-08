@@ -22,6 +22,9 @@ Nova versão do site laroca.dev, em avaliação pelo dono antes de substituir a 
 - `pnpm install`, `pnpm dev` (local), `pnpm build` (confere tipos e gera `dist`), `pnpm preview`.
 
 ## Registro de andamento
+### 2026-10-08 10:05 · Claude Code
+- O dono criou um Gmail exclusivo da marca, `dev.laroca@gmail.com`. O encaminhamento de `contato@laroca.dev` na Cloudflare passou do Gmail pessoal para ele, depois de o destino ser verificado. O site continua mostrando `contato@laroca.dev`; nada mudou no código.
+- Testes: a API da Cloudflare devolveu a regra ativa com o destino novo e o roteamento `ready`. Não testado: a entrega de uma mensagem real.
 ### 2026-10-08 09:40 · Claude Code
 - Pedido do dono: a tela da galeria no cartão do Door PG deve mostrar a seleção de álbuns e de dias. Recapturada mais acima na página (`door-albuns`), com os filtros e duas fileiras de fotos.
 - Testes: `pnpm build` sem erros; captura conferida antes de publicar.
