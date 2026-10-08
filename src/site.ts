@@ -51,7 +51,7 @@ export const PROJETOS: Projeto[] = [
   { nome: "DJ Laroca", categoria: "Site · Música", resumo: "Site oficial com estética neon, galeria de eventos e contratação pelo WhatsApp.", botao: "Ver no ar", link: "https://djlaroca.com.br", imagens: telas("djlaroca") },
   { nome: "DJ Reinaldo", categoria: "Site · Institucional", resumo: "Site editorial para um DJ com mais de 30 anos de carreira, em grafite e dourado.", botao: "Ver no ar", link: "https://djreinaldo.com.br", imagens: telas("djreinaldo") },
   { nome: "Arranca Toco", categoria: "Site · Evento", resumo: "Página do evento com contagem regressiva, ingressos por lote e localização.", botao: "Ver no ar", link: "https://arrancatocopg.com.br", imagens: telas("arrancatoco") },
-  { nome: "Sistema Moda", categoria: "Produto · Lojas de roupas e calçados", resumo: "PDV, estoque por grade de tamanho e cor, trocas e nota fiscal, do caixa ao fechamento.", botao: "Pedir demonstração", link: zap("Olá! Quero uma demonstração do Sistema Moda."), imagens: telas("moda") },
+  { nome: "Sistema Moda", categoria: "Produto · Lojas de roupas e calçados", resumo: "PDV, estoque por grade de tamanho e cor, trocas e nota fiscal, do caixa ao fechamento.", botao: "Pedir demonstração", link: zap("Olá! Quero uma demonstração do Sistema Moda."), imagens: telas("modaescuro") },
   { nome: "Sistema Odonto", categoria: "Produto · Clínicas e harmonização", resumo: "Agenda, prontuário, mapa facial com lote, termos assinados e orçamentos com aceite por link.", botao: "Pedir demonstração", link: zap("Olá! Quero uma demonstração do Sistema Odonto."), imagens: telas("odonto") },
 ];
 
@@ -69,6 +69,6 @@ export const MAIS: { nome: string; tipo: string; texto: string; link?: string }[
  * por isso as páginas iniciais dos sites ficam no meio.
  */
 export const TILES = [
-  "djlaroca-m2", "door-m3", "door-m1", "djlaroca-m1", "djreinaldo-m2", "moda-m1",
+  "djlaroca-m2", "door-m3", "door-m1", "djlaroca-m1", "djreinaldo-m2", "modaescuro-m1",
   "door-m2", "odonto-m1", "djreinaldo-m1", "arrancatoco-m1", "djlaroca-m3",
 ].map(img);

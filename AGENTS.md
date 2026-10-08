@@ -22,6 +22,9 @@ Nova versão do site laroca.dev, em avaliação pelo dono antes de substituir a 
 - `pnpm install`, `pnpm dev` (local), `pnpm build` (confere tipos e gera `dist`), `pnpm preview`.
 
 ## Registro de andamento
+### 2026-10-08 02:50 · Claude Code
+- Erro apontado pelo dono: o Sistema Moda continuava branco. Causas: (1) só a tela da faixa tinha sido refeita no tema escuro, as três do cartão de projetos continuavam claras; (2) a imagem nova da faixa tinha o mesmo nome da antiga, então o navegador podia mostrar a versão em cache. Correção: as quatro telas do Moda foram recapturadas no tema escuro e gravadas com nome novo (`modaescuro-*`).
+- Regra: ao trocar o conteúdo de uma imagem, trocar também o nome do arquivo.
 ### 2026-10-08 02:20 · Claude Code
 - Pedido do dono: a faixa mostrava partes vazias ou cheias de texto dos sites; ele quer as páginas iniciais em destaque. Saíram as 9 cenas de texto (história, reservas, localização, estilos, contato etc.) e ficaram 11 telas com imagem forte: páginas iniciais e galerias dos sites, com as iniciais no meio de cada fileira. A tela do Sistema Moda foi refeita no tema escuro do próprio sistema, para não destoar.
 - Regra para a faixa: só entra cena com foto ou composição forte; bloco de texto não.
