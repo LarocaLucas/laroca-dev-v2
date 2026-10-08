@@ -63,8 +63,12 @@ export const MAIS: { nome: string; tipo: string; texto: string; link?: string }[
   { nome: "Sistema Eventos", tipo: "Em desenvolvimento", texto: "Ingressos, portaria, bar e caixa para casas noturnas e produtoras." },
 ];
 
-/** Faixa de telas: destaque para os sites Door PG, DJ Laroca e DJ Reinaldo; uma tela de cada um dos demais. */
+/**
+ * Faixa de telas: só cenas com imagem forte (páginas iniciais e galerias), sem blocos de texto.
+ * Cada fileira é centralizada, então as telas do meio da lista são as que aparecem primeiro:
+ * por isso as páginas iniciais dos sites ficam no meio.
+ */
 export const TILES = [
-  "door-m1", "djlaroca-m1", "djreinaldo-m1", "door-m2", "moda-m1", "djlaroca-m2", "djreinaldo-m2", "door-m4", "djlaroca-m4", "arrancatoco-m1",
-  "djlaroca-m3", "door-m3", "djreinaldo-m4", "odonto-m1", "door-m5", "djlaroca-m5", "djreinaldo-m3", "door-m6", "djlaroca-m6", "djreinaldo-m5",
+  "djlaroca-m2", "door-m3", "door-m1", "djlaroca-m1", "djreinaldo-m2", "moda-m1",
+  "door-m2", "odonto-m1", "djreinaldo-m1", "arrancatoco-m1", "djlaroca-m3",
 ].map(img);

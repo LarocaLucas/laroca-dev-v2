@@ -22,6 +22,10 @@ Nova versão do site laroca.dev, em avaliação pelo dono antes de substituir a 
 - `pnpm install`, `pnpm dev` (local), `pnpm build` (confere tipos e gera `dist`), `pnpm preview`.
 
 ## Registro de andamento
+### 2026-10-08 02:20 · Claude Code
+- Pedido do dono: a faixa mostrava partes vazias ou cheias de texto dos sites; ele quer as páginas iniciais em destaque. Saíram as 9 cenas de texto (história, reservas, localização, estilos, contato etc.) e ficaram 11 telas com imagem forte: páginas iniciais e galerias dos sites, com as iniciais no meio de cada fileira. A tela do Sistema Moda foi refeita no tema escuro do próprio sistema, para não destoar.
+- Regra para a faixa: só entra cena com foto ou composição forte; bloco de texto não.
+- Testes: `pnpm build` sem erros; faixa fotografada em 1440×900 e 390×844.
 ### 2026-10-08 01:50 · Claude Code
 - Pedido do dono: na faixa de telas abaixo do topo havia sistemas demais; ele quer mais dos sites Door PG, DJ Laroca e DJ Reinaldo, e pouca coisa do Arranca Toco e dos sistemas. Capturadas mais 8 cenas desses três sites (`-m4` a `-m6`). A faixa passou a ter 20 telas: Door 6, DJ Laroca 6, DJ Reinaldo 5, Arranca Toco 1, Sistema Moda 1, Sistema Odonto 1. A lista fica em `TILES`, em `src/site.ts`. Seis imagens que deixaram de ser usadas foram apagadas.
 - Testes: `pnpm build` sem erros; faixa fotografada em 1440×900.
