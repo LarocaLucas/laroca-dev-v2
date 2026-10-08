@@ -47,7 +47,7 @@ export type Projeto = {
 const telas = (site: string): [string, string, string, string] => [img(`${site}-a`), img(`${site}-b`), img(`${site}-hero`), img(`${site}-m1`)];
 
 export const PROJETOS: Projeto[] = [
-  { nome: "Door PG", categoria: "Site · Balada", resumo: "Countdown de lançamento, agenda da semana, galeria de fotos com download e reservas.", botao: "Ver no ar", link: "https://doorpg.com.br", imagens: [img("door-galeria"), img("door-agenda"), img("door-hero"), img("door-m1")] },
+  { nome: "Door PG", categoria: "Site · Balada", resumo: "Countdown de lançamento, agenda da semana, galeria de fotos com download e reservas.", botao: "Ver no ar", link: "https://doorpg.com.br", imagens: [img("door-albuns"), img("door-agenda"), img("door-hero"), img("door-m1")] },
   { nome: "DJ Laroca", categoria: "Site · Música", resumo: "Site oficial com estética neon, galeria de eventos e contratação pelo WhatsApp.", botao: "Ver no ar", link: "https://djlaroca.com.br", imagens: telas("djlaroca") },
   { nome: "DJ Reinaldo", categoria: "Site · Institucional", resumo: "Site editorial para um DJ com mais de 30 anos de carreira, em grafite e dourado.", botao: "Ver no ar", link: "https://djreinaldo.com.br", imagens: telas("djreinaldo") },
   { nome: "Arranca Toco", categoria: "Site · Evento", resumo: "Página do evento com contagem regressiva, ingressos por lote e localização.", botao: "Ver no ar", link: "https://arrancatocopg.com.br", imagens: telas("arrancatoco") },
