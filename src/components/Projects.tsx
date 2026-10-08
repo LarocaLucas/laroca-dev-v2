@@ -70,7 +70,7 @@ export default function Projects() {
         ))}
       </div>
 
-      <div className="mx-auto max-w-5xl pb-20 pt-10 sm:pb-28">
+      <div className="mx-auto max-w-5xl pb-20 pt-20 sm:pb-28 sm:pt-72">
         <FadeIn>
           <h3 className="mb-6 font-medium uppercase tracking-widest text-[#D7E2EA]/70">Mais projetos e o que vem por aí</h3>
         </FadeIn>

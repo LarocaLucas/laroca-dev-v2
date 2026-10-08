@@ -22,6 +22,9 @@ Nova versão do site laroca.dev, em avaliação pelo dono antes de substituir a 
 - `pnpm install`, `pnpm dev` (local), `pnpm build` (confere tipos e gera `dist`), `pnpm preview`.
 
 ## Registro de andamento
+### 2026-10-08 09:10 · Claude Code
+- Pedido do dono: no cartão do Door PG, trocar a tela "01 A Door" por uma da galeria de fotos, na posição de cima, e descer a agenda; e dar espaço entre o último cartão e a lista "Mais projetos", que ficava colada. Feito: `door-galeria` (página `galeria.html` do site) em cima e `door-agenda` embaixo, ambas capturadas no formato do espaço; a lista ganhou respiro maior no desktop (`sm:pt-56`), porque o último cartão empilhado avança além do próprio bloco.
+- Testes: `pnpm build` sem erros; cartão do Door e fim da pilha fotografados em 1440×900 e 390×844.
 ### 2026-10-08 02:50 · Claude Code
 - Erro apontado pelo dono: o Sistema Moda continuava branco. Causas: (1) só a tela da faixa tinha sido refeita no tema escuro, as três do cartão de projetos continuavam claras; (2) a imagem nova da faixa tinha o mesmo nome da antiga, então o navegador podia mostrar a versão em cache. Correção: as quatro telas do Moda foram recapturadas no tema escuro e gravadas com nome novo (`modaescuro-*`).
 - Regra: ao trocar o conteúdo de uma imagem, trocar também o nome do arquivo.
