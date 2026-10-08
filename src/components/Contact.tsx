@@ -1,11 +1,11 @@
-import { CONTATO, EMAIL, GITHUB, WHATSAPP } from "../site";
+import { CONTATO, EMAIL, INSTAGRAM, WHATSAPP } from "../site";
 import { ContactButton, FadeIn } from "./base";
 
 export default function Contact() {
   const links = [
     ["WhatsApp", WHATSAPP],
+    ["Instagram", INSTAGRAM],
     ["E-mail", `mailto:${EMAIL}`],
-    ["GitHub", GITHUB],
   ] as const;
   return (
     <section id="contato" className="rounded-t-[40px] bg-white px-5 pb-10 pt-20 text-[#0C0C0C] sm:rounded-t-[50px] sm:px-8 sm:pt-24 md:rounded-t-[60px] md:px-10 md:pt-32">

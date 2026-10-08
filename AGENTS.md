@@ -16,12 +16,17 @@ Nova versão do site laroca.dev, em avaliação pelo dono antes de substituir a 
 
 ## Estado atual
 - v0.1.0: página única com topo, faixa de telas, sobre, serviços, projetos e contato.
-- Sistema Moda e Sistema Odonto aparecem com capas de texto, sem capturas de tela.
+- Sistema Moda e Sistema Odonto aparecem com telas reais, tiradas dos sistemas rodando localmente com dados de demonstração inventados (loja de teste "Pijamas da Ana" e clínica de teste "Clínica Bella Face"). Nenhum dado de cliente.
 
 ## Como rodar
 - `pnpm install`, `pnpm dev` (local), `pnpm build` (confere tipos e gera `dist`), `pnpm preview`.
 
 ## Registro de andamento
+### 2026-10-08 00:20 · Claude Code
+- Pedido do dono: Docker aberto para fotografar os sistemas; rodapé sem GitHub e com Instagram @dev.laroca.
+- Feito: Moda e Odonto subidos localmente (bancos no Docker, API e web já compilados). Os bancos locais estavam quase vazios, então cadastrei dados de demonstração pela API: no Moda, 1 grade, 5 cores, 8 produtos (68 variações), estoque inicial e 14 vendas com NFC-e de homologação; no Odonto, 12 pacientes fictícios e 19 agendamentos na semana. Telas capturadas no formato de cada espaço e trocadas pelas capas; entraram também na faixa de telas. Rodapé: WhatsApp, Instagram e e-mail.
+- Atenção: esses dados de demonstração ficaram gravados nos bancos locais dos projetos Sistema Moda e Sistema Odonto (não nos de teste automatizado `moda_test`/`odonto_test`).
+- Testes: `pnpm build` sem erros; ver registro da publicação no resumo da sessão.
 ### 2026-10-07 23:40 · Claude Code
 - Pedido do dono: (1) textos em voz de empresa, sem citar o Lucas; (2) diferencial de sistemas totalmente personalizados, sob medida e sob demanda; (3) capturas melhores, porque várias saíam cortadas.
 - Feito: textos reescritos em `src/site.ts` (sobre, chamada do topo, contato, mensagens do WhatsApp, descrição da página); serviços passaram de 5 para 6, com "Sistemas sob medida" em primeiro e "Sistemas prontos por segmento" em segundo. Capturas refeitas: cada cena agora é fotografada no formato do espaço onde aparece e alinhada à seção do site, depois de rolar a página toda para disparar as animações (24 imagens, 690 KB). Cartões usam proporção fixa em vez de altura fixa; no celular mostram a tela principal (14:9) e a larga, com o botão logo abaixo do título para o cartão seguinte não cobri-lo.

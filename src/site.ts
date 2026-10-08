@@ -6,6 +6,7 @@ export const WHATSAPP = "https://wa.me/5542998041396";
 export const zap = (texto: string) => `${WHATSAPP}?text=${encodeURIComponent(texto)}`;
 export const EMAIL = "lucas.laroca.campos@gmail.com";
 export const GITHUB = "https://github.com/LarocaLucas";
+export const INSTAGRAM = "https://instagram.com/dev.laroca";
 
 export const NAV = [
   ["Sobre", "#sobre"],
@@ -50,8 +51,8 @@ export const PROJETOS: Projeto[] = [
   { nome: "DJ Laroca", categoria: "Site · Música", resumo: "Site oficial com estética neon, galeria de eventos e contratação pelo WhatsApp.", botao: "Ver no ar", link: "https://djlaroca.com.br", imagens: telas("djlaroca") },
   { nome: "DJ Reinaldo", categoria: "Site · Institucional", resumo: "Site editorial para um DJ com mais de 30 anos de carreira, em grafite e dourado.", botao: "Ver no ar", link: "https://djreinaldo.com.br", imagens: telas("djreinaldo") },
   { nome: "Arranca Toco", categoria: "Site · Evento", resumo: "Página do evento com contagem regressiva, ingressos por lote e localização.", botao: "Ver no ar", link: "https://arrancatocopg.com.br", imagens: telas("arrancatoco") },
-  { nome: "Sistema Moda", categoria: "Produto · Lojas de roupas e calçados", resumo: "PDV, estoque por grade de tamanho e cor, trocas e nota fiscal, do caixa ao fechamento.", botao: "Pedir demonstração", link: zap("Olá! Quero uma demonstração do Sistema Moda."), capa: ["Estoque por grade", "NFC-e e NF-e", "PDV que funciona sem internet"] },
-  { nome: "Sistema Odonto", categoria: "Produto · Clínicas e harmonização", resumo: "Agenda, prontuário, mapa facial com lote, termos assinados e orçamentos com aceite por link.", botao: "Pedir demonstração", link: zap("Olá! Quero uma demonstração do Sistema Odonto."), capa: ["Mapa facial com lote", "Orçamento com aceite por link", "Agenda e prontuário"] },
+  { nome: "Sistema Moda", categoria: "Produto · Lojas de roupas e calçados", resumo: "PDV, estoque por grade de tamanho e cor, trocas e nota fiscal, do caixa ao fechamento.", botao: "Pedir demonstração", link: zap("Olá! Quero uma demonstração do Sistema Moda."), imagens: telas("moda") },
+  { nome: "Sistema Odonto", categoria: "Produto · Clínicas e harmonização", resumo: "Agenda, prontuário, mapa facial com lote, termos assinados e orçamentos com aceite por link.", botao: "Pedir demonstração", link: zap("Olá! Quero uma demonstração do Sistema Odonto."), imagens: telas("odonto") },
 ];
 
 export const MAIS: { nome: string; tipo: string; texto: string; link?: string }[] = [
@@ -63,4 +64,4 @@ export const MAIS: { nome: string; tipo: string; texto: string; link?: string }[
 ];
 
 /** Faixa de telas: três cenas de cada site, já no formato do bloco. */
-export const TILES = ["door", "djlaroca", "djreinaldo", "arrancatoco"].flatMap((s) => [1, 2, 3].map((k) => img(`${s}-m${k}`)));
+export const TILES = ["door", "moda", "djlaroca", "djreinaldo", "odonto", "arrancatoco"].flatMap((s) => [1, 2, 3].map((k) => img(`${s}-m${k}`)));
