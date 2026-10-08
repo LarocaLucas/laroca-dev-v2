@@ -22,6 +22,9 @@ Nova versão do site laroca.dev, em avaliação pelo dono antes de substituir a 
 - `pnpm install`, `pnpm dev` (local), `pnpm build` (confere tipos e gera `dist`), `pnpm preview`.
 
 ## Registro de andamento
+### 2026-10-08 01:50 · Claude Code
+- Pedido do dono: na faixa de telas abaixo do topo havia sistemas demais; ele quer mais dos sites Door PG, DJ Laroca e DJ Reinaldo, e pouca coisa do Arranca Toco e dos sistemas. Capturadas mais 8 cenas desses três sites (`-m4` a `-m6`). A faixa passou a ter 20 telas: Door 6, DJ Laroca 6, DJ Reinaldo 5, Arranca Toco 1, Sistema Moda 1, Sistema Odonto 1. A lista fica em `TILES`, em `src/site.ts`. Seis imagens que deixaram de ser usadas foram apagadas.
+- Testes: `pnpm build` sem erros; faixa fotografada em 1440×900.
 ### 2026-10-08 01:15 · Claude Code
 - O dono configurou o "Enviar e-mail como" no Gmail. SPF do domínio passou a incluir o Google: `v=spf1 include:_spf.mx.cloudflare.net include:_spf.google.com ~all`. Não há registro DMARC.
 - Foto de perfil da marca criada em `docs/marca/avatar.svg` e `avatar-1024.png` (símbolo dentro da área segura do recorte circular); cópia na área de trabalho do dono.
