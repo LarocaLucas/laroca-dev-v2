@@ -1,4 +1,4 @@
-import { EMAIL, GITHUB, WHATSAPP } from "../site";
+import { CONTATO, EMAIL, GITHUB, WHATSAPP } from "../site";
 import { ContactButton, FadeIn } from "./base";
 
 export default function Contact() {
@@ -17,7 +17,7 @@ export default function Contact() {
         </FadeIn>
         <FadeIn delay={0.15}>
           <p className="max-w-xl font-light leading-relaxed" style={{ fontSize: "clamp(1rem, 2vw, 1.35rem)", color: "rgba(12, 12, 12, 0.72)" }}>
-            Conte o que o seu negócio precisa. Eu levanto os requisitos com você e envio um orçamento com escopo, prazo e valor.
+            {CONTATO}
           </p>
         </FadeIn>
         <FadeIn delay={0.3}>

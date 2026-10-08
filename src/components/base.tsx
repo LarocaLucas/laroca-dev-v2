@@ -1,6 +1,6 @@
 import { type CSSProperties, type ReactNode, useEffect, useRef, useState } from "react";
 import { type MotionValue, motion, useScroll, useTransform } from "motion/react";
-import { zap } from "../site";
+import { MSG_ORCAMENTO, zap } from "../site";
 
 /** Entrada suave quando o elemento aparece na tela. */
 export function FadeIn({ children, delay = 0, duration = 0.7, x = 0, y = 30, className, style }: { children: ReactNode; delay?: number; duration?: number; x?: number; y?: number; className?: string; style?: CSSProperties }) {
@@ -76,7 +76,7 @@ export function AnimatedText({ text, className, style }: { text: string; classNa
   );
 }
 
-export function ContactButton({ label = "Fale comigo", texto = "Olá Lucas! Vi o laroca.dev e quero um orçamento." }: { label?: string; texto?: string }) {
+export function ContactButton({ label = "Fale conosco", texto = MSG_ORCAMENTO }: { label?: string; texto?: string }) {
   return (
     <a
       href={zap(texto)}

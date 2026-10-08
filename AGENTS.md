@@ -8,6 +8,8 @@ Nova versão do site laroca.dev, em avaliação pelo dono antes de substituir a 
 - Todo o conteúdo (textos, links, projetos) fica em `src/site.ts`. Componentes em `src/components`; peças reutilizadas em `base.tsx`.
 - Imagens de terceiros da referência não são usadas. O emblema do topo e os enfeites são desenhados em SVG por `Iso.tsx` (caixas em projeção isométrica). Logotipo: `public/logo.svg` e `public/favicon.svg`.
 - Decisões do dono (07/10/2026): sem preços no site; portfólio com sites no ar, sistemas como produto **sem citar clientes**, projetos do GitHub e os próximos sistemas; WhatsApp novo `5542998041396`.
+- Voz: a laroca.dev fala como **empresa** ("desenvolvemos", "nossa"), nunca como "eu" nem citando o Lucas. Diferencial a destacar: sistemas totalmente personalizados, sob medida e sob demanda.
+- Capturas dos sites: uma por espaço, no formato exato dele (`-hero` 11:10, `-a` 1440:775, `-b` 1280:1016, `-m1..3` 14:9 para a faixa). Não reaproveitar uma captura em espaço de outro formato, senão ela sai cortada.
 - Texto em pt-BR. Movimento respeita `prefers-reduced-motion`.
 - Publicação de prévia: GitHub Pages pelo workflow `.github/workflows/pages.yml` (repositório público `LarocaLucas/laroca-dev-v2`), em https://larocalucas.github.io/laroca-dev-v2/. O `base` do Vite vem da variável `BASE` (padrão `/laroca-dev-v2/`); no domínio próprio usar `BASE=/`.
 - Commits: Conventional Commits em pt-BR.
@@ -20,6 +22,11 @@ Nova versão do site laroca.dev, em avaliação pelo dono antes de substituir a 
 - `pnpm install`, `pnpm dev` (local), `pnpm build` (confere tipos e gera `dist`), `pnpm preview`.
 
 ## Registro de andamento
+### 2026-10-07 23:40 · Claude Code
+- Pedido do dono: (1) textos em voz de empresa, sem citar o Lucas; (2) diferencial de sistemas totalmente personalizados, sob medida e sob demanda; (3) capturas melhores, porque várias saíam cortadas.
+- Feito: textos reescritos em `src/site.ts` (sobre, chamada do topo, contato, mensagens do WhatsApp, descrição da página); serviços passaram de 5 para 6, com "Sistemas sob medida" em primeiro e "Sistemas prontos por segmento" em segundo. Capturas refeitas: cada cena agora é fotografada no formato do espaço onde aparece e alinhada à seção do site, depois de rolar a página toda para disparar as animações (24 imagens, 690 KB). Cartões usam proporção fixa em vez de altura fixa; no celular mostram a tela principal (14:9) e a larga, com o botão logo abaixo do título para o cartão seguinte não cobri-lo.
+- Motivo de mexer em parte concluída: a causa dos cortes era usar uma captura 16:10 em espaços de proporções diferentes.
+- Testes: `pnpm build` sem erros; cartões e seção de serviços fotografados em 1440×900 e 390×844, sem rolagem horizontal nem erros.
 ### 2026-10-07 22:40 · Claude Code
 - Feito: primeira versão a partir do prompt de referência, com o conteúdo do site atual. Emblema 3D e logotipo novos. Capturas reais de doorpg.com.br, djlaroca.com.br, djreinaldo.com.br e arrancatocopg.com.br em `public/img` (WebP, 343 KB no total).
 - Não feito: capturas de tela dos sistemas Moda e Odonto. O Docker Desktop não iniciou nesta sessão, então não deu para subir os sistemas com dados de demonstração; ficaram capas de texto.

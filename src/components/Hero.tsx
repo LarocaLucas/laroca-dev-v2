@@ -1,4 +1,4 @@
-import { NAV } from "../site";
+import { CHAMADA, NAV } from "../site";
 import { ContactButton, FadeIn, Magnet } from "./base";
 import { Emblema } from "./Iso";
 
@@ -26,7 +26,7 @@ export default function Hero() {
       <div className="flex items-end justify-between px-6 pb-7 sm:pb-8 md:px-10 md:pb-10">
         <FadeIn delay={0.35} y={20}>
           <p className="max-w-[160px] font-light uppercase leading-snug tracking-wide text-[#D7E2EA] sm:max-w-[220px] md:max-w-[260px]" style={{ fontSize: "clamp(0.75rem, 1.4vw, 1.5rem)" }}>
-            sites, sistemas e automações feitos para destacar o seu negócio
+            {CHAMADA}
           </p>
         </FadeIn>
         <FadeIn delay={0.5} y={20}>

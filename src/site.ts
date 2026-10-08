@@ -1,4 +1,5 @@
 // Conteúdo do site num lugar só: textos, links e projetos.
+// Voz: a laroca.dev fala como empresa ("nós"), nunca em primeira pessoa do singular.
 const img = (nome: string) => `${import.meta.env.BASE_URL}img/${nome}.webp`;
 
 export const WHATSAPP = "https://wa.me/5542998041396";
@@ -13,16 +14,22 @@ export const NAV = [
   ["Contato", "#contato"],
 ] as const;
 
+export const CHAMADA = "sites, sistemas e automações sob medida para destacar o seu negócio";
+
 export const SOBRE =
-  "Sou o Lucas, desenvolvedor em Castro, no Paraná. Há mais de cinco anos em TI, crio sites, sistemas de gestão e automações para negócios que querem se destacar e vender mais. Do briefing ao deploy, você fala direto comigo. Vamos construir algo incrível juntos!";
+  "A laroca.dev desenvolve sites, sistemas de gestão e automações para negócios que querem se destacar e vender mais. Somos de Castro, no Paraná, com mais de cinco anos de experiência em TI. Cada projeto é feito sob medida para o cliente, do levantamento ao deploy, com atendimento direto de quem desenvolve. Vamos construir algo incrível juntos!";
 
 export const SERVICOS = [
-  ["Sites institucionais", "Site profissional para apresentar o seu negócio, captar clientes e gerar autoridade: design próprio, celular em primeiro lugar, WhatsApp integrado e pronto para o Google."],
+  ["Sistemas sob medida", "Sistemas totalmente personalizados, desenvolvidos sob demanda para o jeito que a sua empresa trabalha. Levantamos os requisitos com você e construímos do zero, sem obrigar o negócio a se adaptar a um software pronto."],
+  ["Sistemas prontos por segmento", "Produtos próprios para lojas de roupas e calçados e para clínicas: PDV, estoque, agenda, prontuário e nota fiscal, configurados para a sua operação."],
+  ["Sites institucionais", "Site profissional para apresentar a sua empresa, captar clientes e gerar autoridade: design próprio, celular em primeiro lugar, WhatsApp integrado e pronto para o Google."],
   ["Landing pages", "Páginas de alta conversão para campanhas, produtos e lançamentos, rápidas e medidas, com foco em transformar visita em contato."],
-  ["Sistemas web", "Sistemas de gestão sob medida e produtos prontos: PDV e estoque para lojas, agenda e prontuário para clínicas, painéis, APIs e relatórios."],
   ["Automações e integrações", "Tarefas repetitivas que passam a rodar sozinhas: WhatsApp, planilhas, cobranças, notas fiscais e sistemas conversando entre si."],
   ["Consultoria de TI", "Diagnóstico e orientação para escolher ferramentas, organizar a infraestrutura e tirar o projeto do papel sem desperdício."],
 ] as const;
+
+export const CONTATO = "Conte o que a sua empresa precisa. Levantamos os requisitos com você e enviamos um orçamento com escopo, prazo e valor.";
+export const MSG_ORCAMENTO = "Olá! Vi o site da laroca.dev e quero um orçamento.";
 
 export type Projeto = {
   nome: string;
@@ -30,19 +37,21 @@ export type Projeto = {
   resumo: string;
   botao: string;
   link: string;
-  /** [esquerda em cima, esquerda embaixo, direita alta] */
-  imagens?: [string, string, string];
+  /** Capturas no formato de cada espaço: [larga, média, principal, principal para celular] */
+  imagens?: [string, string, string, string];
   /** Sem capturas de tela: três destaques em texto. */
   capa?: [string, string, string];
 };
 
+const telas = (site: string): [string, string, string, string] => [img(`${site}-a`), img(`${site}-b`), img(`${site}-hero`), img(`${site}-m1`)];
+
 export const PROJETOS: Projeto[] = [
-  { nome: "Door PG", categoria: "Site · Balada", resumo: "Countdown de lançamento, agenda, galeria de fotos com download e reservas.", botao: "Ver no ar", link: "https://doorpg.com.br", imagens: [img("door-2"), img("door-3"), img("door-1")] },
-  { nome: "DJ Laroca", categoria: "Site · Música", resumo: "Site oficial com estética neon, galeria em mosaico e contratação pelo WhatsApp.", botao: "Ver no ar", link: "https://djlaroca.com.br", imagens: [img("djlaroca-2"), img("djlaroca-3"), img("djlaroca-1")] },
-  { nome: "DJ Reinaldo", categoria: "Site · Institucional", resumo: "Site editorial para um DJ com mais de 30 anos de carreira, em grafite e dourado.", botao: "Ver no ar", link: "https://djreinaldo.com.br", imagens: [img("djreinaldo-2"), img("djreinaldo-3"), img("djreinaldo-1")] },
-  { nome: "Arranca Toco", categoria: "Site · Evento", resumo: "Página do evento com contagem regressiva, ingressos por lote e localização.", botao: "Ver no ar", link: "https://arrancatocopg.com.br", imagens: [img("arrancatoco-2"), img("arrancatoco-3"), img("arrancatoco-1")] },
-  { nome: "Sistema Moda", categoria: "Produto · Lojas de roupas e calçados", resumo: "PDV, estoque por grade de tamanho e cor, trocas e nota fiscal, do caixa ao fechamento.", botao: "Pedir demonstração", link: zap("Olá Lucas! Quero uma demonstração do Sistema Moda."), capa: ["PDV que funciona sem internet", "Estoque por grade", "NFC-e e NF-e"] },
-  { nome: "Sistema Odonto", categoria: "Produto · Clínicas e harmonização", resumo: "Agenda, prontuário, mapa facial com lote, termos assinados e orçamentos com aceite por link.", botao: "Pedir demonstração", link: zap("Olá Lucas! Quero uma demonstração do Sistema Odonto."), capa: ["Agenda e prontuário", "Mapa facial com lote", "Orçamento com aceite por link"] },
+  { nome: "Door PG", categoria: "Site · Balada", resumo: "Countdown de lançamento, agenda da semana, galeria de fotos com download e reservas.", botao: "Ver no ar", link: "https://doorpg.com.br", imagens: telas("door") },
+  { nome: "DJ Laroca", categoria: "Site · Música", resumo: "Site oficial com estética neon, galeria de eventos e contratação pelo WhatsApp.", botao: "Ver no ar", link: "https://djlaroca.com.br", imagens: telas("djlaroca") },
+  { nome: "DJ Reinaldo", categoria: "Site · Institucional", resumo: "Site editorial para um DJ com mais de 30 anos de carreira, em grafite e dourado.", botao: "Ver no ar", link: "https://djreinaldo.com.br", imagens: telas("djreinaldo") },
+  { nome: "Arranca Toco", categoria: "Site · Evento", resumo: "Página do evento com contagem regressiva, ingressos por lote e localização.", botao: "Ver no ar", link: "https://arrancatocopg.com.br", imagens: telas("arrancatoco") },
+  { nome: "Sistema Moda", categoria: "Produto · Lojas de roupas e calçados", resumo: "PDV, estoque por grade de tamanho e cor, trocas e nota fiscal, do caixa ao fechamento.", botao: "Pedir demonstração", link: zap("Olá! Quero uma demonstração do Sistema Moda."), capa: ["Estoque por grade", "NFC-e e NF-e", "PDV que funciona sem internet"] },
+  { nome: "Sistema Odonto", categoria: "Produto · Clínicas e harmonização", resumo: "Agenda, prontuário, mapa facial com lote, termos assinados e orçamentos com aceite por link.", botao: "Pedir demonstração", link: zap("Olá! Quero uma demonstração do Sistema Odonto."), capa: ["Mapa facial com lote", "Orçamento com aceite por link", "Agenda e prontuário"] },
 ];
 
 export const MAIS: { nome: string; tipo: string; texto: string; link?: string }[] = [
@@ -53,4 +62,5 @@ export const MAIS: { nome: string; tipo: string; texto: string; link?: string }[
   { nome: "Sistema Eventos", tipo: "Em desenvolvimento", texto: "Ingressos, portaria, bar e caixa para casas noturnas e produtoras." },
 ];
 
-export const TILES = PROJETOS.flatMap((p) => p.imagens ?? []);
+/** Faixa de telas: três cenas de cada site, já no formato do bloco. */
+export const TILES = ["door", "djlaroca", "djreinaldo", "arrancatoco"].flatMap((s) => [1, 2, 3].map((k) => img(`${s}-m${k}`)));

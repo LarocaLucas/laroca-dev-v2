@@ -6,9 +6,9 @@ import { FadeIn, GhostButton } from "./base";
 
 const RAIO = "rounded-[28px] sm:rounded-[50px] md:rounded-[60px]";
 
-function Capa({ texto, className, style }: { texto: string; className?: string; style?: React.CSSProperties }) {
+function Capa({ texto, className }: { texto: string; className?: string }) {
   return (
-    <div className={`flex items-end p-5 sm:p-8 ${RAIO} ${className ?? ""}`} style={{ background: "linear-gradient(140deg, #18011F 0%, #4A1474 55%, #B600A8 130%)", ...style }}>
+    <div className={`flex items-end p-5 sm:p-8 ${RAIO} ${className ?? ""}`} style={{ background: "linear-gradient(140deg, #18011F 0%, #4A1474 55%, #B600A8 130%)" }}>
       <span className="font-medium uppercase leading-tight text-[#D7E2EA]" style={{ fontSize: "clamp(0.8rem, 1.9vw, 1.7rem)" }}>
         {texto}
       </span>
@@ -18,7 +18,7 @@ function Capa({ texto, className, style }: { texto: string; className?: string; 
 
 function Cartao({ p, i, total, progresso }: { p: Projeto; i: number; total: number; progresso: MotionValue<number> }) {
   const escala = useTransform(progresso, [i / total, 1], [1, 1 - (total - 1 - i) * 0.03]);
-  const alturas = [{ height: "clamp(130px, 16vw, 230px)" }, { height: "clamp(160px, 22vw, 340px)" }];
+  const formatos = ["aspect-[1440/775]", "aspect-[1280/1016]"];
   return (
     <div className="sticky top-24 flex h-[85vh] items-start justify-center md:top-32">
       <motion.article style={{ scale: escala, top: `${i * 28}px` }} className={`relative w-full max-w-6xl origin-top border-2 border-[#D7E2EA] bg-[#0C0C0C] p-4 sm:p-6 md:p-8 ${RAIO}`}>
@@ -37,14 +37,16 @@ function Cartao({ p, i, total, progresso }: { p: Projeto; i: number; total: numb
             <GhostButton href={p.link}>{p.botao}</GhostButton>
           </div>
         </div>
-        <div className="flex gap-3 sm:gap-4">
-          <div className="flex w-[40%] flex-col gap-3 sm:gap-4">
-            {[0, 1].map((k) => (p.imagens ? <img key={k} src={p.imagens[k]} alt="" loading="lazy" className={`w-full object-cover object-top ${RAIO}`} style={alturas[k]} /> : <Capa key={k} texto={p.capa![k]} style={alturas[k]} />))}
-          </div>
-          <div className="w-[60%]">{p.imagens ? <img src={p.imagens[2]} alt={`Tela inicial de ${p.nome}`} loading="lazy" className={`h-full w-full object-cover object-top ${RAIO}`} /> : <Capa texto={p.capa![2]} className="h-full" />}</div>
-        </div>
-        <div className="mt-4 sm:hidden">
+        <div className="mb-4 sm:hidden">
           <GhostButton href={p.link}>{p.botao}</GhostButton>
+        </div>
+        <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
+          <div className="hidden w-[40%] flex-col gap-3 sm:flex sm:gap-4">
+            {formatos.map((f, k) => (p.imagens ? <img key={k} src={p.imagens[k]} alt="" loading="lazy" className={`w-full object-cover ${f} ${RAIO}`} /> : <Capa key={k} texto={p.capa![k]} className={f} />))}
+          </div>
+          <div className="hidden sm:block sm:w-[60%]">{p.imagens ? <img src={p.imagens[2]} alt={`Tela inicial de ${p.nome}`} loading="lazy" className={`h-full w-full object-cover ${RAIO}`} /> : <Capa texto={p.capa![2]} className="h-full" />}</div>
+          <div className="sm:hidden">{p.imagens ? <img src={p.imagens[3]} alt={`Tela inicial de ${p.nome}`} loading="lazy" className={`aspect-[14/9] w-full object-cover ${RAIO}`} /> : <Capa texto={p.capa![2]} className="aspect-[14/9]" />}</div>
+          <div className="sm:hidden">{p.imagens ? <img src={p.imagens[0]} alt="" loading="lazy" className={`w-full object-cover ${formatos[0]} ${RAIO}`} /> : <Capa texto={p.capa![0]} className={formatos[0]} />}</div>
         </div>
       </motion.article>
     </div>
