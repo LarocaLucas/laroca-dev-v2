@@ -22,6 +22,9 @@ Nova versão do site laroca.dev, em avaliação pelo dono antes de substituir a 
 - `pnpm install`, `pnpm dev` (local), `pnpm build` (confere tipos e gera `dist`), `pnpm preview`.
 
 ## Registro de andamento
+### 2026-10-08 01:15 · Claude Code
+- O dono configurou o "Enviar e-mail como" no Gmail. SPF do domínio passou a incluir o Google: `v=spf1 include:_spf.mx.cloudflare.net include:_spf.google.com ~all`. Não há registro DMARC.
+- Foto de perfil da marca criada em `docs/marca/avatar.svg` e `avatar-1024.png` (símbolo dentro da área segura do recorte circular); cópia na área de trabalho do dono.
 ### 2026-10-08 00:50 · Claude Code
 - Pedido do dono: e-mail com cara de empresa sem criar conta nova. Ativado o Email Routing da Cloudflare no domínio laroca.dev (registros MX, SPF e DKIM criados pela própria Cloudflare) com a regra `contato@laroca.dev` → Gmail do dono. O site passou a mostrar `contato@laroca.dev`.
 - Não feito: envio pelo Gmail como `contato@laroca.dev` ("Enviar e-mail como"), que depende de uma senha de app criada pelo dono na conta Google.
