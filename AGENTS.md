@@ -24,6 +24,9 @@ Site da laroca.dev, no ar em https://laroca.dev desde 08/10/2026. A versão ante
 - `pnpm install`, `pnpm dev` (local), `pnpm build` (confere tipos e gera `dist`), `pnpm preview`.
 
 ## Registro de andamento
+### 2026-10-08 12:10 · Claude Code
+- O dono verificou o domínio no Search Console (registro `google-site-verification` no DNS) e enviou o sitemap; o painel mostrou "não foi possível buscar". Conferido do lado do servidor: `sitemap.xml` responde 200 como `application/xml`, XML válido, também para o agente do Googlebot; robots libera tudo; a Cloudflare não tem proteção contra robôs ligada. É o estado inicial comum de propriedade nova.
+- Achado e corrigido: `http://laroca.dev` respondia 200 sem redirecionar. Ligado o "Always Use HTTPS" na zona da Cloudflare (vale para todos os subdomínios).
 ### 2026-10-08 11:30 · Claude Code
 - Pedido do dono: colocar a nova versão no domínio e configurar o SEO, com foco em buscas por desenvolvedores e empresas de tecnologia da região.
 - Feito: publicado em laroca.dev (Worker `laroca-dev`, versão 65cf2b47). `www` redireciona com 301. Pré-renderização do HTML; título e descrição com Castro e Ponta Grossa; canonical; Open Graph e imagem de compartilhamento 1200×630; JSON-LD de empresa local com endereço em Castro e área atendida (Castro, Ponta Grossa, Carambeí, Campos Gerais, Paraná); robots, sitemap, página 404, manifest, ícones, cabeçalhos de cache e segurança; textos alternativos nas telas dos projetos; região citada no topo e no "Sobre".
