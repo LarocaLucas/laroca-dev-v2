@@ -4,7 +4,7 @@ const img = (nome: string) => `${import.meta.env.BASE_URL}img/${nome}.webp`;
 
 export const WHATSAPP = "https://wa.me/5542998041396";
 export const zap = (texto: string) => `${WHATSAPP}?text=${encodeURIComponent(texto)}`;
-export const EMAIL = "lucas.laroca.campos@gmail.com";
+export const EMAIL = "contato@laroca.dev";
 export const GITHUB = "https://github.com/LarocaLucas";
 export const INSTAGRAM = "https://instagram.com/dev.laroca";
 

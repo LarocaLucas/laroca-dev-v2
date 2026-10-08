@@ -22,6 +22,10 @@ Nova versão do site laroca.dev, em avaliação pelo dono antes de substituir a 
 - `pnpm install`, `pnpm dev` (local), `pnpm build` (confere tipos e gera `dist`), `pnpm preview`.
 
 ## Registro de andamento
+### 2026-10-08 00:50 · Claude Code
+- Pedido do dono: e-mail com cara de empresa sem criar conta nova. Ativado o Email Routing da Cloudflare no domínio laroca.dev (registros MX, SPF e DKIM criados pela própria Cloudflare) com a regra `contato@laroca.dev` → Gmail do dono. O site passou a mostrar `contato@laroca.dev`.
+- Não feito: envio pelo Gmail como `contato@laroca.dev` ("Enviar e-mail como"), que depende de uma senha de app criada pelo dono na conta Google.
+- Testes: API da Cloudflare devolveu roteamento `ready` e destino verificado; os MX aparecem na consulta pública. Não testado: a entrega de uma mensagem real.
 ### 2026-10-08 00:20 · Claude Code
 - Pedido do dono: Docker aberto para fotografar os sistemas; rodapé sem GitHub e com Instagram @dev.laroca.
 - Feito: Moda e Odonto subidos localmente (bancos no Docker, API e web já compilados). Os bancos locais estavam quase vazios, então cadastrei dados de demonstração pela API: no Moda, 1 grade, 5 cores, 8 produtos (68 variações), estoque inicial e 14 vendas com NFC-e de homologação; no Odonto, 12 pacientes fictícios e 19 agendamentos na semana. Telas capturadas no formato de cada espaço e trocadas pelas capas; entraram também na faixa de telas. Rodapé: WhatsApp, Instagram e e-mail.
