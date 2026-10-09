@@ -52,10 +52,10 @@ function Letra({ c, progresso, faixa }: { c: string; progresso: MotionValue<numb
   );
 }
 
-/** Texto que acende letra por letra conforme a página rola. */
+/** Texto que acende letra por letra conforme a página rola; termina com o parágrafo ainda inteiro na tela. */
 export function AnimatedText({ text, className, style }: { text: string; className?: string; style?: CSSProperties }) {
   const ref = useRef<HTMLParagraphElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start 0.8", "end 0.2"] });
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start 0.9", "end 0.75"] });
   const total = text.length;
   let i = 0;
   return (
