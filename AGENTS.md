@@ -24,6 +24,10 @@ Site da laroca.dev, no ar em https://laroca.dev desde 08/10/2026. A versão ante
 - `pnpm install`, `pnpm dev` (local), `pnpm build` (confere tipos e gera `dist`), `pnpm preview`.
 
 ## Registro de andamento
+### 2026-11-03 · Claude Code
+- Perfil da Empresa no Google aprovado. Ligado ao site no JSON-LD: `sameAs` com `https://www.google.com/search?kgmid=/g/11p1n3bsbw` e `hasMap` com `https://share.google/RT5dZ01Q354g9vrdt`. Link de avaliação: https://g.page/r/CUsyPovzAVlEEBM/review. O dono vai trocar o endereço do perfil por área de atendimento (Castro, Ponta Grossa, Carambeí, Curitiba): não atende em local físico. O JSON-LD já não tinha rua, só a cidade.
+- E-mail: DMARC passou para `p=quarantine`; o "Enviar como" do `contato@` sai pelo SMTP do Resend (detalhes em `~/.claude/referencia-ferramentas.md`).
+- Testes: JSON-LD válido, `pnpm build` sem erros. Publicado com o ok do dono (versão afd4a4fe) e conferido no ar.
 ### 2026-10-09 · Claude Code
 - Pedido do dono: (1) "Sites sob demanda" como serviço nº 2, mantendo os demais abaixo; (2) no celular, o texto do "Sobre" só terminava de acender com a tela já em Serviços; (3) "Sobre" dizendo sede em Castro, atendimento na região de Ponta Grossa e Curitiba e em todo o Brasil; (4) telas do DJ Laroca e do DJ Reinaldo nas versões novas dos sites.
 - Feito: serviço novo em `SERVICOS` (agora 7) e no JSON-LD; texto do "Sobre" reescrito; `areaServed` ganhou Curitiba e Brasil; `lastmod` do sitemap. `AnimatedText` passou de `["start 0.8", "end 0.2"]` para `["start 0.9", "end 0.75"]`: o texto termina de acender com o parágrafo ainda inteiro na tela. Capturas refeitas no formato de cada espaço e gravadas com nome novo por causa do cache de 30 dias de `/img` (`djlaroca3-*`, 6 telas; `djreinaldo2-*`, 5 telas); as antigas foram apagadas. O resumo do cartão do DJ Laroca foi atualizado para a v3.
