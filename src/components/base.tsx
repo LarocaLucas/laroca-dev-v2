@@ -1,6 +1,48 @@
 import { type CSSProperties, type ReactNode, useEffect, useRef, useState } from "react";
 import { type MotionValue, motion, useScroll, useTransform } from "motion/react";
-import { MSG_ORCAMENTO, zap } from "../site";
+import { EMAIL, EMPRESA, INSTAGRAM, LEGAIS, MSG_ORCAMENTO, WHATSAPP, zap } from "../site";
+
+/** Rodapé das páginas (fundo branco): contatos, páginas legais e identificação do fornecedor (Decreto 7.962/2013, art. 2º, I e II). */
+export function Rodape({ className = "" }: { className?: string }) {
+  const contatos = [
+    ["WhatsApp", WHATSAPP],
+    ["Instagram", INSTAGRAM],
+    ["E-mail", `mailto:${EMAIL}`],
+  ] as const;
+  const suave = { color: "rgba(12, 12, 12, 0.72)" };
+  return (
+    <footer className={`mx-auto max-w-6xl text-[#0C0C0C] ${className}`} style={{ borderTop: "1px solid rgba(12, 12, 12, 0.15)" }}>
+      <div className="flex flex-col items-center justify-between gap-6 pt-8 sm:flex-row">
+        <a href={import.meta.env.BASE_URL} className="text-lg font-black uppercase tracking-tight">
+          laroca<span className="text-[#B600A8]">.</span>dev
+        </a>
+        <nav aria-label="Contatos" className="flex gap-6 sm:gap-10">
+          {contatos.map(([nome, href]) => (
+            <a key={nome} href={href} target="_blank" rel="noopener noreferrer" className="text-sm font-medium uppercase tracking-wider transition-opacity duration-200 hover:opacity-60 sm:text-base">
+              {nome}
+              {href.startsWith("http") && <span className="sr-only"> (abre em nova aba)</span>}
+            </a>
+          ))}
+        </nav>
+        <p className="text-sm font-light" style={suave}>
+          Castro e Ponta Grossa, PR
+        </p>
+      </div>
+      <div className="mt-8 flex flex-col items-center justify-between gap-4 text-center text-xs font-light sm:flex-row sm:text-left sm:text-sm" style={suave}>
+        <p>
+          {EMPRESA.nome} · CNPJ {EMPRESA.cnpj} · {EMPRESA.cidade} · {EMAIL}
+        </p>
+        <nav aria-label="Informações legais" className="flex flex-wrap justify-center gap-x-5 gap-y-2">
+          {LEGAIS.map(([nome, caminho]) => (
+            <a key={caminho} href={`${import.meta.env.BASE_URL}${caminho}`} className="underline-offset-4 hover:underline">
+              {nome}
+            </a>
+          ))}
+        </nav>
+      </div>
+    </footer>
+  );
+}
 
 /** Entrada suave quando o elemento aparece na tela. */
 export function FadeIn({ children, delay = 0, duration = 0.7, x = 0, y = 30, className, style }: { children: ReactNode; delay?: number; duration?: number; x?: number; y?: number; className?: string; style?: CSSProperties }) {

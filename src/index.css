@@ -33,6 +33,138 @@ html {
   outline-offset: 4px;
 }
 
+/* Páginas legais: texto longo em fundo branco, feito para ler. */
+.juridico {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: rgba(12, 12, 12, 0.82);
+}
+.juridico section + section {
+  margin-top: 3.5rem;
+}
+.juridico h2 {
+  display: flex;
+  gap: 0.75rem;
+  align-items: baseline;
+  scroll-margin-top: 2rem;
+  margin-bottom: 1.25rem;
+  font-size: clamp(1.35rem, 2.6vw, 1.9rem);
+  font-weight: 800;
+  line-height: 1.15;
+  text-transform: uppercase;
+  color: #0c0c0c;
+}
+.juridico h2 span {
+  color: #b600a8;
+}
+.juridico h3 {
+  margin: 2rem 0 0.75rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #0c0c0c;
+}
+.juridico p,
+.juridico ul,
+.juridico ol {
+  margin-bottom: 1rem;
+}
+.juridico ul,
+.juridico ol {
+  padding-left: 1.4rem;
+}
+.juridico ul {
+  list-style: disc;
+}
+.juridico ol {
+  list-style: decimal;
+}
+.juridico li + li {
+  margin-top: 0.4rem;
+}
+.juridico li::marker {
+  color: #b600a8;
+}
+.juridico strong {
+  font-weight: 600;
+  color: #0c0c0c;
+}
+.juridico a {
+  color: #8a0080;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+.juridico a:hover {
+  color: #0c0c0c;
+}
+.juridico code {
+  font-size: 0.9em;
+  padding: 0.05em 0.35em;
+  border-radius: 6px;
+  background: rgba(12, 12, 12, 0.06);
+  overflow-wrap: anywhere;
+}
+.juridico .resumo {
+  padding: 1.5rem 1.5rem 1rem;
+  border-radius: 28px;
+  background: #0c0c0c;
+  color: #d7e2ea;
+}
+.juridico .resumo h2 {
+  color: #d7e2ea;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+}
+.juridico .resumo li::marker {
+  color: #d7e2ea;
+}
+.juridico .resumo .nota {
+  font-size: 0.85rem;
+  color: rgba(215, 226, 234, 0.7);
+}
+.juridico .ficha {
+  margin: 1.25rem 0;
+  padding: 1.25rem 1.25rem 0.5rem;
+  border: 1px solid rgba(12, 12, 12, 0.15);
+  border-radius: 24px;
+}
+.juridico .ficha h3 {
+  margin-top: 0;
+}
+.juridico .ficha dl > div {
+  display: grid;
+  gap: 0.15rem 1.25rem;
+  padding: 0.6rem 0;
+  border-top: 1px solid rgba(12, 12, 12, 0.08);
+}
+.juridico .ficha dt {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #0c0c0c;
+}
+.juridico .ficha dd {
+  font-size: 0.98rem;
+}
+@media (min-width: 640px) {
+  .juridico .resumo {
+    padding: 2rem 2.25rem 1.25rem;
+  }
+  .juridico .ficha {
+    padding: 1.5rem 1.75rem 0.75rem;
+  }
+  .juridico .ficha dl > div {
+    grid-template-columns: 9.5rem 1fr;
+  }
+}
+.juridico .destaque {
+  padding: 1rem 1.25rem;
+  border-left: 4px solid #b600a8;
+  border-radius: 0 16px 16px 0;
+  background: rgba(182, 0, 168, 0.06);
+}
+
 @keyframes flutua {
   0%,
   100% {

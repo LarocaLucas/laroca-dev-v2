@@ -1,14 +1,15 @@
 import { StrictMode } from "react";
 import { createRoot, hydrateRoot } from "react-dom/client";
 import { MotionConfig } from "motion/react";
-import App from "./App";
+import { ROTAS, caminhoAtual } from "./rotas";
 import "./index.css";
 
+const { Pagina } = ROTAS[caminhoAtual(location.pathname, import.meta.env.BASE_URL)] ?? ROTAS[""];
 const raiz = document.getElementById("root")!;
 const app = (
   <StrictMode>
     <MotionConfig reducedMotion="user">
-      <App />
+      <Pagina />
     </MotionConfig>
   </StrictMode>
 );

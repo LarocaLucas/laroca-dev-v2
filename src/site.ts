@@ -7,6 +7,14 @@ export const zap = (texto: string) => `${WHATSAPP}?text=${encodeURIComponent(tex
 export const EMAIL = "contato@laroca.dev";
 export const GITHUB = "https://github.com/LarocaLucas";
 export const INSTAGRAM = "https://instagram.com/dev.laroca";
+export const TELEFONE = "(42) 99804-1396";
+export const EMPRESA = { nome: "Lucas Laroca Campos", cnpj: "44.967.171/0001-60", cidade: "Castro – PR" };
+/** Páginas legais (o caminho não leva a barra inicial; a base do site entra na frente). */
+export const LEGAIS = [
+  ["Privacidade", "privacidade"],
+  ["Termos de uso", "termos"],
+  ["Exclusão de dados", "exclusao-de-dados"],
+] as const;
 
 export const NAV = [
   ["Sobre", "#sobre"],
