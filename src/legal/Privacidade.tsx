@@ -155,7 +155,7 @@ const secoes: Secao[] = [
             [
               "O que é",
               <>
-                A <strong>Central laroca.dev</strong> (central.laroca.dev) é uma ferramenta <strong>interna</strong>, usada apenas pela laroca.dev, para agendar e publicar conteúdo <strong>nas nossas próprias contas</strong> (como @dev.laroca e o perfil artístico DJ Laroca, do titular da empresa) e acompanhar os resultados. Ela não é oferecida ao público e não acessa contas de terceiros. O acesso é protegido por login com verificação de e-mail (Cloudflare Access).
+                A <strong>Central laroca.dev</strong> (central.laroca.dev) é uma ferramenta <strong>interna</strong>, usada apenas pela laroca.dev, para agendar e publicar conteúdo <strong>nas nossas próprias contas</strong> (os perfis @dev.laroca) e acompanhar os resultados. Ela não é oferecida ao público e não acessa contas de terceiros. O acesso é protegido por login com verificação de e-mail (Cloudflare Access).
               </>,
             ],
             [
