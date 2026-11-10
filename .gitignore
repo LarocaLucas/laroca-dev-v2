@@ -4,3 +4,5 @@ dist/
 .vite/
 dist-ssr/
 .wrangler/
+scripts/gravar-videos/quadros/
+scripts/gravar-videos/erro-*.png

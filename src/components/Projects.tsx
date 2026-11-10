@@ -1,22 +1,52 @@
-import { useRef } from "react";
-import { type MotionValue, motion, useScroll, useTransform } from "motion/react";
-import { ArrowUpRight } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { type MotionValue, motion, useMotionValueEvent, useScroll, useTransform } from "motion/react";
+import { ArrowUpRight, Pause, Play } from "lucide-react";
 import { MAIS, PROJETOS, type Projeto } from "../site";
 import { FadeIn, GhostButton } from "./base";
 
 const RAIO = "rounded-[28px] sm:rounded-[50px] md:rounded-[60px]";
 
-function Capa({ texto, className }: { texto: string; className?: string }) {
+/**
+ * Vídeo da navegação: só baixa e toca quando está na tela e o cartão é o da frente da pilha
+ * (o de trás continua "visível" para o navegador, embora coberto). Com movimento reduzido fica no pôster.
+ */
+function Navegacao({ p, ativo, className }: { p: Projeto; ativo: boolean; className: string }) {
+  const ref = useRef<HTMLVideoElement>(null);
+  const parado = useRef(false); // pausado pela pessoa (ou por preferir menos movimento)
+  const [visivel, setVisivel] = useState(false);
+  const [tocando, setTocando] = useState(false);
+
+  useEffect(() => {
+    parado.current = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const obs = new IntersectionObserver(([e]) => setVisivel(e.isIntersecting), { threshold: 0.25 });
+    obs.observe(ref.current!);
+    return () => obs.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const v = ref.current!;
+    if (visivel && ativo && !parado.current) v.play().catch(() => {});
+    else v.pause();
+  }, [visivel, ativo]);
+
+  const alternar = () => {
+    const v = ref.current!;
+    parado.current = !v.paused;
+    if (v.paused) v.play().catch(() => {});
+    else v.pause();
+  };
+
   return (
-    <div className={`flex items-end p-5 sm:p-8 ${RAIO} ${className ?? ""}`} style={{ background: "linear-gradient(140deg, #18011F 0%, #4A1474 55%, #B600A8 130%)" }}>
-      <span className="font-medium uppercase leading-tight text-[#D7E2EA]" style={{ fontSize: "clamp(0.8rem, 1.9vw, 1.7rem)" }}>
-        {texto}
-      </span>
+    <div className={`relative overflow-hidden ${RAIO} ${className}`}>
+      <video ref={ref} src={p.video.mp4} poster={p.video.poster} muted loop playsInline preload="none" aria-label={`${p.nome}: vídeo navegando pelas telas do projeto`} onPlay={() => setTocando(true)} onPause={() => setTocando(false)} className="h-full w-full object-cover" />
+      <button type="button" onClick={alternar} aria-label={tocando ? `Pausar vídeo do ${p.nome}` : `Reproduzir vídeo do ${p.nome}`} className="absolute right-4 top-4 grid h-11 w-11 place-items-center rounded-full bg-[#0C0C0C]/70 text-[#D7E2EA] backdrop-blur transition-colors hover:bg-[#0C0C0C] sm:right-6 sm:top-6">
+        {tocando ? <Pause aria-hidden="true" className="h-4 w-4" /> : <Play aria-hidden="true" className="h-4 w-4" />}
+      </button>
     </div>
   );
 }
 
-function Cartao({ p, i, total, progresso }: { p: Projeto; i: number; total: number; progresso: MotionValue<number> }) {
+function Cartao({ p, i, total, progresso, ativo }: { p: Projeto; i: number; total: number; progresso: MotionValue<number>; ativo: boolean }) {
   const escala = useTransform(progresso, [i / total, 1], [1, 1 - (total - 1 - i) * 0.03]);
   const formatos = ["aspect-[1440/775]", "aspect-[1280/1016]"];
   return (
@@ -42,11 +72,13 @@ function Cartao({ p, i, total, progresso }: { p: Projeto; i: number; total: numb
         </div>
         <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
           <div className="hidden w-[40%] flex-col gap-3 sm:flex sm:gap-4">
-            {formatos.map((f, k) => (p.imagens ? <img key={k} src={p.imagens[k]} alt={`${p.nome}: tela ${k + 2} do projeto`} loading="lazy" className={`w-full object-cover ${f} ${RAIO}`} /> : <Capa key={k} texto={p.capa![k]} className={f} />))}
+            {formatos.map((f, k) => (
+              <img key={k} src={p.imagens[k]} alt={`${p.nome}: tela ${k + 2} do projeto`} loading="lazy" className={`w-full object-cover ${f} ${RAIO}`} />
+            ))}
           </div>
-          <div className="hidden sm:block sm:w-[60%]">{p.imagens ? <img src={p.imagens[2]} alt={`${p.nome}, ${p.categoria.toLowerCase()}: tela inicial`} loading="lazy" className={`h-full w-full object-cover ${RAIO}`} /> : <Capa texto={p.capa![2]} className="h-full" />}</div>
-          <div className="sm:hidden">{p.imagens ? <img src={p.imagens[3]} alt={`${p.nome}, ${p.categoria.toLowerCase()}: tela inicial`} loading="lazy" className={`aspect-[14/9] w-full object-cover ${RAIO}`} /> : <Capa texto={p.capa![2]} className="aspect-[14/9]" />}</div>
-          <div className="sm:hidden">{p.imagens ? <img src={p.imagens[0]} alt="" loading="lazy" className={`w-full object-cover ${formatos[0]} ${RAIO}`} /> : <Capa texto={p.capa![0]} className={formatos[0]} />}</div>
+          <Navegacao p={p} ativo={ativo} className="hidden sm:block sm:w-[60%]" />
+          <Navegacao p={p} ativo={ativo} className="aspect-[11/10] sm:hidden" />
+          <img src={p.imagens[0]} alt="" loading="lazy" className={`w-full object-cover sm:hidden ${formatos[0]} ${RAIO}`} />
         </div>
       </motion.article>
     </div>
@@ -56,6 +88,12 @@ function Cartao({ p, i, total, progresso }: { p: Projeto; i: number; total: numb
 export default function Projects() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
+  const [ativo, setAtivo] = useState(0);
+  // Cartão da frente: o último cujo topo já passou de 60% da altura da janela.
+  useMotionValueEvent(scrollYProgress, "change", () => {
+    const cartoes = [...(ref.current?.querySelectorAll("article") ?? [])];
+    setAtivo(cartoes.reduce((a, c, k) => (c.getBoundingClientRect().top < window.innerHeight * 0.6 ? k : a), 0));
+  });
   return (
     <section id="projetos" className="relative z-10 -mt-10 rounded-t-[40px] bg-[#0C0C0C] px-4 pt-20 sm:-mt-12 sm:rounded-t-[50px] sm:px-8 sm:pt-24 md:-mt-14 md:rounded-t-[60px] md:px-10 md:pt-32">
       <FadeIn>
@@ -66,7 +104,7 @@ export default function Projects() {
 
       <div ref={ref}>
         {PROJETOS.map((p, i) => (
-          <Cartao key={p.nome} p={p} i={i} total={PROJETOS.length} progresso={scrollYProgress} />
+          <Cartao key={p.nome} p={p} i={i} total={PROJETOS.length} progresso={scrollYProgress} ativo={i === ativo} />
         ))}
       </div>
 

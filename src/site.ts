@@ -47,21 +47,23 @@ export type Projeto = {
   resumo: string;
   botao: string;
   link: string;
-  /** Capturas no formato de cada espaço: [larga, média, principal, principal para celular] */
-  imagens?: [string, string, string, string];
-  /** Sem capturas de tela: três destaques em texto. */
-  capa?: [string, string, string];
+  /** Capturas no formato de cada espaço: [larga 1440:775, média 1280:1016] */
+  imagens: [string, string];
+  /** Vídeo da navegação (MP4 11:10 em loop) e o pôster WebP com o primeiro quadro. */
+  video: { mp4: string; poster: string };
 };
 
-const telas = (site: string): [string, string, string, string] => [img(`${site}-a`), img(`${site}-b`), img(`${site}-hero`), img(`${site}-m1`)];
+const telas = (site: string): [string, string] => [img(`${site}-a`), img(`${site}-b`)];
+/** Gravados pelo roteiro em scripts/gravar-videos; troque a versão no nome ao regravar (cache de 30 dias em /img). */
+const video = (nome: string) => ({ mp4: `${import.meta.env.BASE_URL}img/${nome}-nav-v1.mp4`, poster: img(`${nome}-nav-v1`) });
 
 export const PROJETOS: Projeto[] = [
-  { nome: "Door PG", categoria: "Site · Balada", resumo: "Countdown de lançamento, agenda da semana, galeria de fotos com download e reservas.", botao: "Ver no ar", link: "https://doorpg.com.br", imagens: [img("door-albuns"), img("door-agenda"), img("door-hero"), img("door-m1")] },
-  { nome: "DJ Laroca", categoria: "Site · Música", resumo: "Site oficial com logo revelada em tinta, agenda de shows sempre atualizada e galeria de fotos que se renova sozinha.", botao: "Ver no ar", link: "https://djlaroca.com.br", imagens: telas("djlaroca3") },
-  { nome: "DJ Reinaldo", categoria: "Site · Institucional", resumo: "Site editorial para um DJ com mais de 30 anos de carreira, em grafite e dourado.", botao: "Ver no ar", link: "https://djreinaldo.com.br", imagens: telas("djreinaldo2") },
-  { nome: "Arranca Toco", categoria: "Site · Evento", resumo: "Página do evento com contagem regressiva, ingressos por lote e localização.", botao: "Ver no ar", link: "https://arrancatocopg.com.br", imagens: telas("arrancatoco") },
-  { nome: "Sistema Moda", categoria: "Produto · Lojas de roupas e calçados", resumo: "PDV, estoque por grade de tamanho e cor, trocas e nota fiscal, do caixa ao fechamento.", botao: "Pedir demonstração", link: zap("Olá! Quero uma demonstração do Sistema Moda."), imagens: telas("modaescuro") },
-  { nome: "Sistema Odonto", categoria: "Produto · Clínicas e harmonização", resumo: "Agenda, prontuário, mapa facial com lote, termos assinados e orçamentos com aceite por link.", botao: "Pedir demonstração", link: zap("Olá! Quero uma demonstração do Sistema Odonto."), imagens: telas("odonto") },
+  { nome: "Door PG", categoria: "Site · Balada", resumo: "Countdown de lançamento, agenda da semana, galeria de fotos com download e reservas.", botao: "Ver no ar", link: "https://doorpg.com.br", imagens: [img("door-albuns"), img("door-agenda")], video: video("door") },
+  { nome: "DJ Laroca", categoria: "Site · Música", resumo: "Site oficial com logo revelada em tinta, agenda de shows sempre atualizada e galeria de fotos que se renova sozinha.", botao: "Ver no ar", link: "https://djlaroca.com.br", imagens: telas("djlaroca3"), video: video("djlaroca") },
+  { nome: "DJ Reinaldo", categoria: "Site · Institucional", resumo: "Site editorial para um DJ com mais de 30 anos de carreira, em grafite e dourado.", botao: "Ver no ar", link: "https://djreinaldo.com.br", imagens: telas("djreinaldo2"), video: video("djreinaldo") },
+  { nome: "Arranca Toco", categoria: "Site · Evento", resumo: "Página do evento com contagem regressiva, ingressos por lote e localização.", botao: "Ver no ar", link: "https://arrancatocopg.com.br", imagens: telas("arrancatoco"), video: video("arrancatoco") },
+  { nome: "Sistema Moda", categoria: "Produto · Lojas de roupas e calçados", resumo: "PDV, estoque por grade de tamanho e cor, trocas e nota fiscal, do caixa ao fechamento.", botao: "Pedir demonstração", link: zap("Olá! Quero uma demonstração do Sistema Moda."), imagens: telas("modaescuro"), video: video("moda") },
+  { nome: "Sistema Odonto", categoria: "Produto · Clínicas e harmonização", resumo: "Agenda, prontuário, mapa facial com lote, termos assinados e orçamentos com aceite por link.", botao: "Pedir demonstração", link: zap("Olá! Quero uma demonstração do Sistema Odonto."), imagens: telas("odonto"), video: video("odonto") },
 ];
 
 export const MAIS: { nome: string; tipo: string; texto: string; link?: string }[] = [
