@@ -28,7 +28,7 @@ Site da laroca.dev, no ar em https://laroca.dev desde 08/10/2026. A versão ante
 
 ## Registro de andamento
 ### 2026-11-10 · Claude Code
-- Faixa: fileira de cima só com sites (Door, DJ Laroca, DJ Reinaldo, Arranca Toco, portfólio), de baixo só com sistemas (Arara, Simetria, Breu, Catraca, Croqui), com as legendas discretas "Sites" acima e "Sistemas" abaixo (pedido do dono).
+- Faixa: fileira de cima só com sites (Door, DJ Laroca, DJ Reinaldo, Arranca Toco, portfólio), de baixo só com sistemas (Arara, Simetria, Breu, Catraca, Croqui), com as legendas discretas "Sites" acima e "Sistemas" abaixo (pedido do dono). Publicado pelo dono (versão 54d8315b).
 - Pedido do dono: faixa em 30 s e os nomes de produto escolhidos por ele: Arara (Moda), Simetria (Odonto), Catraca (ingressos), Croqui (Mapa 3D), Rodagem (Revenda), Alicerce (Imobiliária). Sistema Eventos virou **Breu** (escolhido em 10/11); a Central continua "Central laroca.dev". Os cartões passam a ter o nome da marca no título e o segmento na linha de cima.
 ### 2026-11-09 (noite) · Claude Code
 - Pedido do dono: vídeos também na faixa logo após o topo, no estilo do motionsites, com as fileiras rodando sozinhas uma para cada lado; incluir o portfólio do GitHub (larocalucas.github.io), o sistema de ingressos, o Mapa 3D e o Sys Door, todos com dados e construções fictícios.
