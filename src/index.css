@@ -185,7 +185,7 @@ html {
   }
 }
 .faixa {
-  animation: faixa 80s linear infinite;
+  animation: faixa 50s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
