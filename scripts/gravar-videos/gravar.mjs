@@ -1,16 +1,18 @@
 // Grava a navegação de um site pelo screencast do Edge e monta um MP4 em loop + pôster WebP.
-// Uso (de dentro desta pasta): node gravar.mjs <nome> ../../public/img
-// Nomes em roteiros.mjs. Moda e Odonto exigem os sistemas rodando localmente (ver AGENTS.md).
+// Uso (de dentro desta pasta): node gravar.mjs <nome> ../../public/img [cartao|faixa]
 import { chromium } from "playwright-core";
 import { execFileSync } from "node:child_process";
 import { mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { ROTEIROS } from "./roteiros.mjs";
 
-const [nome, saida = "saida"] = process.argv.slice(2);
+const [nome, saida = "saida", formato = "cartao"] = process.argv.slice(2);
 const r = ROTEIROS[nome];
 if (!r) throw new Error(`roteiro desconhecido: ${nome}`);
-const W = r.largura ?? 1100, H = r.altura ?? 1000;
-const pasta = `quadros/${nome}`;
+// cartão: 11:10 para o espaço grande dos projetos; faixa: 14:9 para as fileiras abaixo do topo.
+const faixa = formato === "faixa";
+const W = faixa ? 1400 : r.largura ?? 1100, H = faixa ? 900 : r.altura ?? 1000;
+const arquivo = faixa ? r.arquivo.replace("-nav-", "-faixa-") : r.arquivo;
+const pasta = `quadros/${nome}-${formato}`;
 rmSync(pasta, { recursive: true, force: true });
 mkdirSync(pasta, { recursive: true });
 mkdirSync(saida, { recursive: true });
@@ -87,11 +89,11 @@ quadros.forEach((q, i) => {
 lista += `file '${String(quadros.length - 1).padStart(5, "0")}.jpg'\n`;
 writeFileSync(`${pasta}/lista.txt`, lista);
 
-const larg = r.saidaLargura ?? 880;
-const mp4 = `${saida}/${r.arquivo}.mp4`;
+const larg = faixa ? 560 : 880;
+const mp4 = `${saida}/${arquivo}.mp4`;
 execFileSync("ffmpeg", ["-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", `${pasta}/lista.txt`,
-  "-vf", `fps=30,scale=${larg}:-2:flags=lanczos`, "-c:v", "libx264", "-preset", "slow", "-crf", String(r.crf ?? 27),
+  "-vf", `fps=30,scale=${larg}:-2:flags=lanczos`, "-c:v", "libx264", "-preset", "slow", "-crf", faixa ? "30" : "27",
   "-pix_fmt", "yuv420p", "-movflags", "+faststart", "-an", mp4]);
-execFileSync("ffmpeg", ["-y", "-loglevel", "error", "-i", `${pasta}/00000.jpg`, "-vf", `scale=${larg}:-2:flags=lanczos`, "-quality", "80", `${saida}/${r.arquivo}.webp`]);
+execFileSync("ffmpeg", ["-y", "-loglevel", "error", "-i", `${pasta}/00000.jpg`, "-vf", `scale=${larg}:-2:flags=lanczos`, "-quality", "80", `${saida}/${arquivo}.webp`]);
 const dur = (fim - quadros[0].t).toFixed(1);
 console.log(`${nome}: ${quadros.length} quadros, ${dur}s -> ${mp4}`);

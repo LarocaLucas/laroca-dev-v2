@@ -1,40 +1,59 @@
 import { useEffect, useRef, useState } from "react";
+import { Pause, Play } from "lucide-react";
 import { TILES } from "../site";
 
-function Fila({ imagens, deslocamento }: { imagens: string[]; deslocamento: number }) {
+type Tile = (typeof TILES)[number][number];
+
+/** Vídeo de uma tela da faixa: só baixa e toca enquanto aparece. */
+function Tela({ t, parado }: { t: Tile; parado: boolean }) {
+  const ref = useRef<HTMLVideoElement>(null);
+  const [visivel, setVisivel] = useState(false);
+
+  useEffect(() => {
+    const obs = new IntersectionObserver(([e]) => setVisivel(e.isIntersecting));
+    obs.observe(ref.current!);
+    return () => obs.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const v = ref.current!;
+    if (visivel && !parado) v.play().catch(() => {});
+    else v.pause();
+  }, [visivel, parado]);
+
   return (
-    <div className="flex w-max gap-3" style={{ transform: `translateX(${deslocamento}px)`, willChange: "transform" }}>
-      {[...imagens, ...imagens, ...imagens].map((src, i) => (
-        <img key={i} src={src} alt="" loading="lazy" width={420} height={270} className="h-[170px] w-[264px] flex-none rounded-2xl object-cover sm:h-[270px] sm:w-[420px]" />
+    <div className="flex-none pr-3">
+      <video ref={ref} src={t.mp4} poster={t.poster} muted loop playsInline preload="none" aria-hidden="true" className="h-[170px] w-[264px] rounded-2xl object-cover sm:h-[270px] sm:w-[420px]" />
+    </div>
+  );
+}
+
+function Fila({ telas, reverso, parado }: { telas: Tile[]; reverso?: boolean; parado: boolean }) {
+  return (
+    <div className="faixa flex w-max" style={{ animationDirection: reverso ? "reverse" : "normal", animationPlayState: parado ? "paused" : "running" }}>
+      {[...telas, ...telas, ...telas].map((t, i) => (
+        <Tela key={i} t={t} parado={parado} />
       ))}
     </div>
   );
 }
 
-/** Duas fileiras de telas dos projetos que deslizam em sentidos opostos conforme a página rola. */
+/** Duas fileiras de vídeos dos projetos que rodam sozinhas, em sentidos opostos. */
 export default function Marquee() {
-  const ref = useRef<HTMLElement>(null);
-  const [offset, setOffset] = useState(0);
+  const [parado, setParado] = useState(false);
 
+  // Quem prefere menos movimento recebe a faixa parada (o CSS também desliga a animação).
   useEffect(() => {
-    const rolar = () => {
-      const topo = ref.current?.offsetTop ?? 0;
-      setOffset((window.scrollY - topo + window.innerHeight) * 0.3);
-    };
-    rolar();
-    window.addEventListener("scroll", rolar, { passive: true });
-    return () => window.removeEventListener("scroll", rolar);
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) setParado(true);
   }, []);
 
-  const meio = Math.ceil(TILES.length / 2);
   return (
-    <section ref={ref} aria-hidden="true" className="flex flex-col gap-3 overflow-hidden bg-[#0C0C0C] pb-10 pt-24 sm:pt-32 md:pt-40">
-      <div className="flex justify-center">
-        <Fila imagens={TILES.slice(0, meio)} deslocamento={offset - 200} />
-      </div>
-      <div className="flex justify-center">
-        <Fila imagens={TILES.slice(meio)} deslocamento={-(offset - 200)} />
-      </div>
+    <section className="relative flex flex-col gap-3 overflow-hidden bg-[#0C0C0C] pb-16 pt-24 sm:pt-32 md:pt-40">
+      <Fila telas={TILES[0]} parado={parado} />
+      <Fila telas={TILES[1]} reverso parado={parado} />
+      <button type="button" onClick={() => setParado(!parado)} aria-label={parado ? "Reproduzir a faixa de projetos" : "Pausar a faixa de projetos"} className="absolute bottom-2 right-4 grid h-11 w-11 place-items-center rounded-full border border-[#D7E2EA]/25 text-[#D7E2EA] transition-colors hover:bg-[#D7E2EA]/10 sm:right-8 md:right-10">
+        {parado ? <Play aria-hidden="true" className="h-4 w-4" /> : <Pause aria-hidden="true" className="h-4 w-4" />}
+      </button>
     </section>
   );
 }

@@ -178,11 +178,22 @@ html {
   animation: flutua 4.5s ease-in-out infinite;
 }
 
+/* Faixa de projetos: três cópias da fileira; andar um terço emenda sem salto. */
+@keyframes faixa {
+  to {
+    transform: translateX(calc(-100% / 3));
+  }
+}
+.faixa {
+  animation: faixa 80s linear infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  .iso-flutua {
+  .iso-flutua,
+  .faixa {
     animation: none;
   }
 }

@@ -64,22 +64,22 @@ export const PROJETOS: Projeto[] = [
   { nome: "Arranca Toco", categoria: "Site · Evento", resumo: "Página do evento com contagem regressiva, ingressos por lote e localização.", botao: "Ver no ar", link: "https://arrancatocopg.com.br", imagens: telas("arrancatoco"), video: video("arrancatoco") },
   { nome: "Sistema Moda", categoria: "Produto · Lojas de roupas e calçados", resumo: "PDV, estoque por grade de tamanho e cor, trocas e nota fiscal, do caixa ao fechamento.", botao: "Pedir demonstração", link: zap("Olá! Quero uma demonstração do Sistema Moda."), imagens: telas("modaescuro"), video: video("moda") },
   { nome: "Sistema Odonto", categoria: "Produto · Clínicas e harmonização", resumo: "Agenda, prontuário, mapa facial com lote, termos assinados e orçamentos com aceite por link.", botao: "Pedir demonstração", link: zap("Olá! Quero uma demonstração do Sistema Odonto."), imagens: telas("odonto"), video: video("odonto") },
+  { nome: "Sistema Eventos", categoria: "Produto · Casas noturnas e produtoras", resumo: "Fechamento da noite com portaria, bar, despesas e folha, agenda de artistas e painel de resultados.", botao: "Pedir demonstração", link: zap("Olá! Quero uma demonstração do Sistema Eventos."), imagens: telas("eventos"), video: video("eventos") },
+  { nome: "Ingressos online", categoria: "Produto · Venda de ingressos", resumo: "Site de venda com lotes, cupons, bistrôs e camarotes no mapa, ingresso nominal com QR e validador na portaria.", botao: "Pedir demonstração", link: zap("Olá! Quero uma demonstração do sistema de ingressos."), imagens: telas("ingressos"), video: video("ingressos") },
+  { nome: "Mapa 3D de eventos", categoria: "Produto · Planta e montagem", resumo: "Construtor 3D do espaço com palco, som, luz e estruturas, vista de cima, modo noite e lista para orçamento em PDF.", botao: "Pedir demonstração", link: zap("Olá! Quero uma demonstração do Mapa 3D de eventos."), imagens: telas("mapa3d"), video: video("mapa3d") },
 ];
 
 export const MAIS: { nome: string; tipo: string; texto: string; link?: string }[] = [
+  { nome: "Portfólio de desenvolvedor", tipo: "Site · Portfólio", texto: "Portfólio com fundo de partículas, filtros por tipo de projeto e linha do tempo.", link: "https://larocalucas.github.io/" },
   { nome: "HelpDesk CLI", tipo: "GitHub · Python", texto: "Sistema de tickets de suporte com SQLite, relatórios e interface no terminal.", link: `${GITHUB}/helpdesk-cli` },
   { nome: "AWS Dev Environment", tipo: "GitHub · Infraestrutura", texto: "Ambiente de desenvolvimento na nuvem montado como código.", link: `${GITHUB}/aws-dev-environment` },
   { nome: "Sistema Revenda", tipo: "Em desenvolvimento", texto: "Gestão de revenda de veículos com o site da loja integrado ao estoque." },
   { nome: "Sistema Imobiliária", tipo: "Em desenvolvimento", texto: "Imóveis, portais, CRM e locação, com o site da imobiliária atualizado sozinho." },
-  { nome: "Sistema Eventos", tipo: "Em desenvolvimento", texto: "Ingressos, portaria, bar e caixa para casas noturnas e produtoras." },
 ];
 
-/**
- * Faixa de telas: só cenas com imagem forte (páginas iniciais e galerias), sem blocos de texto.
- * Cada fileira é centralizada, então as telas do meio da lista são as que aparecem primeiro:
- * por isso as páginas iniciais dos sites ficam no meio.
- */
+/** Faixa abaixo do topo: vídeos 14:9 da navegação, duas fileiras que rodam em sentidos opostos. */
+const faixa = (nome: string) => ({ mp4: `${import.meta.env.BASE_URL}img/${nome}-faixa-v1.mp4`, poster: img(`${nome}-faixa-v1`) });
 export const TILES = [
-  "djlaroca3-m2", "door-m3", "door-m1", "djlaroca3-m1", "djreinaldo2-m2", "modaescuro-m1",
-  "door-m2", "odonto-m1", "djreinaldo2-m1", "arrancatoco-m1", "djlaroca3-m3",
-].map(img);
+  ["door", "djlaroca", "ingressos", "moda", "portfolio"],
+  ["djreinaldo", "mapa3d", "eventos", "odonto", "arrancatoco"],
+].map((fila) => fila.map(faixa));
