@@ -38,6 +38,11 @@ function Fila({ telas, reverso, parado }: { telas: Tile[]; reverso?: boolean; pa
   );
 }
 
+/** Legenda discreta de cada fileira. */
+function Rotulo({ children }: { children: string }) {
+  return <p className="px-4 text-xs font-light uppercase tracking-[0.3em] text-[#D7E2EA]/45 sm:px-8 md:px-10">{children}</p>;
+}
+
 /** Duas fileiras de vídeos dos projetos que rodam sozinhas, em sentidos opostos. */
 export default function Marquee() {
   const [parado, setParado] = useState(false);
@@ -49,8 +54,10 @@ export default function Marquee() {
 
   return (
     <section className="relative flex flex-col gap-3 overflow-hidden bg-[#0C0C0C] pb-16 pt-24 sm:pt-32 md:pt-40">
+      <Rotulo>Sites</Rotulo>
       <Fila telas={TILES[0]} parado={parado} />
       <Fila telas={TILES[1]} reverso parado={parado} />
+      <Rotulo>Sistemas</Rotulo>
       <button type="button" onClick={() => setParado(!parado)} aria-label={parado ? "Reproduzir a faixa de projetos" : "Pausar a faixa de projetos"} className="absolute bottom-2 right-4 grid h-11 w-11 place-items-center rounded-full border border-[#D7E2EA]/25 text-[#D7E2EA] transition-colors hover:bg-[#D7E2EA]/10 sm:right-8 md:right-10">
         {parado ? <Play aria-hidden="true" className="h-4 w-4" /> : <Pause aria-hidden="true" className="h-4 w-4" />}
       </button>

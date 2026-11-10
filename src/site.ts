@@ -79,7 +79,8 @@ export const MAIS: { nome: string; tipo: string; texto: string; link?: string }[
 
 /** Faixa abaixo do topo: vídeos 14:9 da navegação, duas fileiras que rodam em sentidos opostos. */
 const faixa = (nome: string) => ({ mp4: `${import.meta.env.BASE_URL}img/${nome}-faixa-v1.mp4`, poster: img(`${nome}-faixa-v1`) });
+/** Fileira de cima: sites; de baixo: sistemas. */
 export const TILES = [
-  ["door", "djlaroca", "ingressos", "moda", "portfolio"],
-  ["djreinaldo", "mapa3d", "eventos", "odonto", "arrancatoco"],
+  ["door", "djlaroca", "djreinaldo", "arrancatoco", "portfolio"],
+  ["moda", "odonto", "eventos", "ingressos", "mapa3d"],
 ].map((fila) => fila.map(faixa));
