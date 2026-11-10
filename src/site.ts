@@ -62,19 +62,19 @@ export const PROJETOS: Projeto[] = [
   { nome: "DJ Laroca", categoria: "Site · Música", resumo: "Site oficial com logo revelada em tinta, agenda de shows sempre atualizada e galeria de fotos que se renova sozinha.", botao: "Ver no ar", link: "https://djlaroca.com.br", imagens: telas("djlaroca3"), video: video("djlaroca") },
   { nome: "DJ Reinaldo", categoria: "Site · Institucional", resumo: "Site editorial para um DJ com mais de 30 anos de carreira, em grafite e dourado.", botao: "Ver no ar", link: "https://djreinaldo.com.br", imagens: telas("djreinaldo2"), video: video("djreinaldo") },
   { nome: "Arranca Toco", categoria: "Site · Evento", resumo: "Página do evento com contagem regressiva, ingressos por lote e localização.", botao: "Ver no ar", link: "https://arrancatocopg.com.br", imagens: telas("arrancatoco"), video: video("arrancatoco") },
-  { nome: "Sistema Moda", categoria: "Produto · Lojas de roupas e calçados", resumo: "PDV, estoque por grade de tamanho e cor, trocas e nota fiscal, do caixa ao fechamento.", botao: "Pedir demonstração", link: zap("Olá! Quero uma demonstração do Sistema Moda."), imagens: telas("modaescuro"), video: video("moda") },
-  { nome: "Sistema Odonto", categoria: "Produto · Clínicas e harmonização", resumo: "Agenda, prontuário, mapa facial com lote, termos assinados e orçamentos com aceite por link.", botao: "Pedir demonstração", link: zap("Olá! Quero uma demonstração do Sistema Odonto."), imagens: telas("odonto"), video: video("odonto") },
+  { nome: "Arara", categoria: "Sistema para lojas de roupas e calçados", resumo: "PDV, estoque por grade de tamanho e cor, trocas e nota fiscal, do caixa ao fechamento.", botao: "Pedir demonstração", link: zap("Olá! Quero uma demonstração do Arara."), imagens: telas("modaescuro"), video: video("moda") },
+  { nome: "Simetria", categoria: "Sistema para clínicas e harmonização", resumo: "Agenda, prontuário, mapa facial com lote, termos assinados e orçamentos com aceite por link.", botao: "Pedir demonstração", link: zap("Olá! Quero uma demonstração do Simetria."), imagens: telas("odonto"), video: video("odonto") },
   { nome: "Sistema Eventos", categoria: "Produto · Casas noturnas e produtoras", resumo: "Fechamento da noite com portaria, bar, despesas e folha, agenda de artistas e painel de resultados.", botao: "Pedir demonstração", link: zap("Olá! Quero uma demonstração do Sistema Eventos."), imagens: telas("eventos"), video: video("eventos") },
-  { nome: "Ingressos online", categoria: "Produto · Venda de ingressos", resumo: "Site de venda com lotes, cupons, bistrôs e camarotes no mapa, ingresso nominal com QR e validador na portaria.", botao: "Pedir demonstração", link: zap("Olá! Quero uma demonstração do sistema de ingressos."), imagens: telas("ingressos"), video: video("ingressos") },
-  { nome: "Mapa 3D de eventos", categoria: "Produto · Planta e montagem", resumo: "Construtor 3D do espaço com palco, som, luz e estruturas, vista de cima, modo noite e lista para orçamento em PDF.", botao: "Pedir demonstração", link: zap("Olá! Quero uma demonstração do Mapa 3D de eventos."), imagens: telas("mapa3d"), video: video("mapa3d") },
+  { nome: "Catraca", categoria: "Venda de ingressos online", resumo: "Site de venda com lotes, cupons, bistrôs e camarotes no mapa, ingresso nominal com QR e validador na portaria.", botao: "Pedir demonstração", link: zap("Olá! Quero uma demonstração do Catraca."), imagens: telas("ingressos"), video: video("ingressos") },
+  { nome: "Croqui", categoria: "Mapa 3D de espaços e eventos", resumo: "Construtor 3D do espaço com palco, som, luz e estruturas, vista de cima, modo noite e lista para orçamento em PDF.", botao: "Pedir demonstração", link: zap("Olá! Quero uma demonstração do Croqui."), imagens: telas("mapa3d"), video: video("mapa3d") },
 ];
 
 export const MAIS: { nome: string; tipo: string; texto: string; link?: string }[] = [
   { nome: "Portfólio de desenvolvedor", tipo: "Site · Portfólio", texto: "Portfólio com fundo de partículas, filtros por tipo de projeto e linha do tempo.", link: "https://larocalucas.github.io/" },
   { nome: "HelpDesk CLI", tipo: "GitHub · Python", texto: "Sistema de tickets de suporte com SQLite, relatórios e interface no terminal.", link: `${GITHUB}/helpdesk-cli` },
   { nome: "AWS Dev Environment", tipo: "GitHub · Infraestrutura", texto: "Ambiente de desenvolvimento na nuvem montado como código.", link: `${GITHUB}/aws-dev-environment` },
-  { nome: "Sistema Revenda", tipo: "Em desenvolvimento", texto: "Gestão de revenda de veículos com o site da loja integrado ao estoque." },
-  { nome: "Sistema Imobiliária", tipo: "Em desenvolvimento", texto: "Imóveis, portais, CRM e locação, com o site da imobiliária atualizado sozinho." },
+  { nome: "Rodagem", tipo: "Em desenvolvimento · Revenda de veículos", texto: "Gestão de revenda de veículos com o site da loja integrado ao estoque." },
+  { nome: "Alicerce", tipo: "Em desenvolvimento · Imobiliárias", texto: "Imóveis, portais, CRM e locação, com o site da imobiliária atualizado sozinho." },
 ];
 
 /** Faixa abaixo do topo: vídeos 14:9 da navegação, duas fileiras que rodam em sentidos opostos. */
